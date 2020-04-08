@@ -1,0 +1,373 @@
+/*------------------------- Document Global Styles -------------------------*/
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    background: url(../img/thumb-1920-662118.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    margin: 0;
+    display: flex;
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 1rem;
+}
+
+/*------------------------- Status Bars -------------------------*/
+
+.status-bar {
+    height: 1rem;
+    width: 12rem;
+    background: rgb(30, 30, 30);
+    box-shadow: inset 0 1px 5px #000, 0 1px 0 #444;
+    border-radius: 20px;
+}
+
+.bar {
+    height: 100%;
+    border-radius: 20px;
+    box-shadow : inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transition : width 1s;
+}
+
+#hp {
+    width: 0;
+    background: red;
+}
+
+#attack {
+    width: 0;
+    background: blue;
+}
+
+#defense {
+    width: 0;
+    background: green;
+}
+
+#speed {
+    width: 0;
+    background: yellow;
+}
+
+#special-attack {
+    width: 0;
+    background: steelblue;
+}
+
+#special-defense {
+    width: 0;
+    background: springgreen;
+}
+
+/*------------------------- Grid and Flexbox -------------------------*/
+
+#pokedex {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto auto;
+    height: auto;
+    width: auto;
+    padding: 1rem 2rem;
+    margin: auto auto;
+    border-radius: 2.5%;
+    border: 1px solid black;
+    background: rgb(60,60,60);
+    box-shadow: inset 0 0 5px 5px rgba(255, 255, 255, 0.3), 20px 20px 5px 5px rgba(0, 0, 0, 0.6);
+}
+
+#item-1 {
+    display: grid;
+    gap: 1rem;
+}
+
+#item-2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1rem;
+}
+
+#item-5 {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: auto auto;
+}
+
+#item-3, #item-4, #item-6, #item-7 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#item-8, #item-9 {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto;
+    gap: 1rem;
+    justify-content: center;
+    align-content: center;
+    padding: 1rem;
+}
+
+#first-type, #second-type {
+    justify-self: center;
+    align-self: center;
+}
+
+.item-10 {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto;
+    gap: .5rem 1rem;
+    align-content: center;
+}
+
+#header {
+    grid-column: 1/3;
+    grid-row: 1;
+    justify-self: center;
+    align-self: center;
+    font-size: 2rem;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+}
+
+#footer {
+    grid-column: 1/3; 
+    grid-row: 3;
+    justify-self: center;
+    align-self: center;
+    font-size: 1.5rem;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+}
+
+
+/*------------------------- Document Specific Styles -------------------------*/
+
+#image {
+    height: 10rem;
+}
+
+.no-error {
+    background: rgb(110, 175, 228);
+    border-radius: 2.5%;
+    box-shadow: inset 0 0 10px 10px rgba(255, 255, 255, 0.5), 0 0 5px 1px rgba(255, 255, 255, 0.5);
+    animation: main-display-light 1s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+}
+
+.error {
+    background: rgb(246, 48, 48);
+    border-radius: 2.5%;
+    box-shadow: inset 0 0 10px 10px rgba(255, 255, 255, 0.5), 0 0 5px 3px rgba(255, 0, 0, 0.5);
+    animation: main-display-error-light 1s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+}
+
+#item-4, #item-8, #item-9, #item-6, #item-7, #item-2 {
+    background: rgb(50,50,50);
+    box-shadow: inset 0 1px 5px #000, 0 1px 0 #444;
+}
+
+.button {
+    background: rgb(80,80,80);
+    height: 2rem;
+    width: 4rem;
+    border: none;
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.3), 0 1px 0 #444;
+    color: black;
+    margin: 5px;
+}
+
+.button:active{
+    border: 1px solid rgb(80,80,80);
+    box-shadow: inset 0 1px 5px #000, 0 1px 0 #444;
+}
+
+input {
+    background: rgb(110, 175, 228);
+    border: 1px solid rgb(110, 175, 228);
+    height: 1.2rem;
+    box-shadow: inset 0 0 10px 5px rgba(255, 255, 255, 0.5), 0 0 5px 1px rgba(255, 255, 255, 0.5);
+    text-align: center;
+    font-family: 'Luckiest Guy', cursive;
+    margin: .5rem;
+    animation: input-display-light 1s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+}
+
+.pill-background {
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    padding: .1rem;
+    border: 3px solid white;
+    border-radius: 20px;
+    width: 4rem;
+    text-align: center;
+    
+}
+
+/*------------------------- Pokemon Types Styles -------------------------*/
+
+.normal {
+    background: rgb(160, 155, 135);
+}
+
+.fighting {
+    background: rgb(124, 62, 33);
+}
+
+.flying {
+    background: rgb(132, 163, 236);
+}
+
+.poison {
+    background: rgb(117, 46, 158);
+}
+
+.ground {
+    background: rgb(251, 229, 127);
+}
+
+.rock {
+    background: rgb(155, 153, 66);
+}
+
+.bug {
+    background: rgb(160, 238, 34);
+}
+
+.ghost {
+    background: rgb(139, 97, 255);
+}
+
+.steel {
+    background: rgb(175, 175, 175);
+}
+
+.fire {
+    background: rgb(246, 70, 26);
+}
+
+.water {
+    background: rgb(97, 192, 255);
+}
+
+.grass {
+    background: rgb(102, 255, 97);
+}
+
+.electric {
+    background: rgb(255, 255, 0);
+}
+
+.psychic {
+    background: rgb(251, 80, 186);
+}
+
+.ice {
+    background: rgb(176, 234, 245);
+}
+
+.dragon {
+    background: rgb(95, 49, 248);
+}
+
+.dark {
+    background: rgb(107, 59, 36);
+}
+
+.fairy {
+    background: rgb(251, 178, 248);
+}
+
+.unknown {
+    background: rgb(68, 68, 68);
+}
+
+.shadow {
+    background: rgb(95, 95, 95);
+}
+
+/*------------------------- Animations -------------------------*/
+
+@keyframes main-display-light {
+
+    from{box-shadow: inset 0 0 10px 10px rgba(255, 255, 255, 0.5), 0 0 5px 1px rgba(255, 255, 255, 0.5);}
+    to{box-shadow: inset 0 0 10px 10px rgba(255, 255, 255, 0.7), 0 0 10px 5px rgba(255, 255, 255, 0.5);}
+
+}
+
+@keyframes input-display-light {
+
+    from{box-shadow: inset 0 0 10px 5px rgba(255, 255, 255, 0.5), 0 0 5px 1px rgba(255, 255, 255, 0.5);}
+    to{box-shadow: inset 0 0 10px 5px rgba(255, 255, 255, 0.6), 0 0 7px 3px rgba(255, 255, 255, 0.5);}
+
+}
+
+@keyframes main-display-error-light {
+
+    from{box-shadow: inset 0 0 10px 10px rgba(255, 0, 0, 0.5), 0 0 5px 3px rgba(255, 0, 0, 0.5)}
+    to{box-shadow: inset 0 0 10px 10px rgba(255, 0, 0, 0.5), 0 0 10px 10px rgba(255, 0, 0, 0.5)}
+
+}
+
+/*------------------------- Media Queries -------------------------*/
+
+@media(max-width: 768px){
+
+    #pokedex {
+        grid-template-columns: 20rem;
+        grid-template-rows: auto auto auto auto;
+    }
+
+    #header {
+        grid-column: 1;
+        grid-row: 1;
+        font-size: 1rem;
+    }
+
+    #item-1 {
+        grid-column: 1;
+        grid-row: 2;
+    }
+    
+    #item-2 {
+        grid-column: 1;
+        grid-row: 3;
+    }
+    
+    #footer {
+        grid-column: 1; 
+        grid-row: 4;
+        font-size: 1rem;
+    }
+
+    .status-bar {
+        width: 14rem;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

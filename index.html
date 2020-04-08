@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Pokedex</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet"> 
+    <link rel='stylesheet' type='text/css' href='css/style.css'>
+</head>
+
+<body>
+    
+    <div id="pokedex">
+
+        <div id="header">PokeAPI - Discover every Pokemon!</div>
+
+        <div id="item-1">
+            <div class="no-error" id="item-3">
+                <img id="image">
+            </div>
+            <div id="item-4">
+                <div id="name"></div>
+            </div>
+            <div id="item-5">
+                <div id="item-8">
+                    <div id="height"></div>
+                    <div id="weight"></div>
+                </div>
+                <div id="item-9">
+                    <div class="pill-background" id="first-type"></div>
+                    <div class="pill-background" id="second-type"></div>
+                </div>
+            </div>
+            <div id="item-6">
+                <button type="button" class="button" id="back">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <button type="button" class="button" id="next">
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+            <div id="item-7">
+                <input type="text">
+                <button type="button" class="button" id="search">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="item-2">
+            <div class="item-10">
+                <div style="grid-column: 1/4; grid-row: 1">HP</div>
+                <div class="status-bar">
+                    <div class="bar" id="hp"></div>
+                </div>
+                <div id="hp-value"></div>
+            </div>
+            <div class="item-10">
+                <div style="grid-column: 1/4; grid-row: 1">Attack</div>
+                <div class="status-bar">
+                    <div class="bar" id="attack"></div>
+                </div>
+                <div id="attack-value"></div>
+            </div>
+            <div class="item-10">
+                <div style="grid-column: 1/4; grid-row: 1">Defense</div>
+                <div class="status-bar">
+                    <div class="bar" id="defense"></div>
+                </div>
+                <div id="defense-value"></div>
+            </div>
+            <div class="item-10">
+                <div style="grid-column: 1/4; grid-row: 1">Speed</div>
+                <div class="status-bar">
+                    <div class="bar" id="speed"></div>
+                </div>
+                <div id="speed-value"></div>
+            </div>
+            <div class="item-10">
+                <div style="grid-column: 1/4; grid-row: 1">Special-Attack</div>
+                <div class="status-bar">
+                    <div class="bar" id="special-attack"></div>
+                </div>
+                <div id="special-attack-value"></div>
+            </div>
+            <div class="item-10">
+                <div style="grid-column: 1/4; grid-row: 1">Special-Defense</div>
+                <div class="status-bar">
+                    <div class="bar" id="special-defense"></div>
+                </div>
+                <div id="special-defense-value"></div>
+            </div>
+        </div>
+
+        <div id="footer">&copy;Leonel Gauna</div>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
+    <script src="js/index.js"></script>
+
+</body>
+
+</html>
