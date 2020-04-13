@@ -61,6 +61,7 @@ function searchPokemon(){
 function showBasicInfo(answerJSON){
     document.querySelector("#image").src = answerJSON.sprites["front_default"];
     document.querySelector("#name").innerText = `Name: ${answerJSON.name}`;
+    document.querySelector("#name").innerText = `Name: ${answerJSON.name} #${answerJSON.id}`;
     document.querySelector("#height").innerText = `Height: ${answerJSON.height}`;
     document.querySelector("#weight").innerText = `Weight: ${answerJSON.weight}`;
 
