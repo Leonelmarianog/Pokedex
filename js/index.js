@@ -1,5 +1,3 @@
-let position = 1;
-
 getFirstPokemon();
 document.querySelector("#next").onclick = getNextPokemon;
 document.querySelector("#back").onclick = getPreviousPokemon;
@@ -16,8 +14,8 @@ function getFirstPokemon(){
 }
 
 function getNextPokemon(){
-    position++;
-    pagination();
+    let position = getNextPosition();
+    refreshCurrentPosition(position);
     fetch(`https://pokeapi.co/api/v2/pokemon/${position}/`)
         .then(answer => answer.json())
         .then(answerJSON => {
@@ -28,9 +26,22 @@ function getNextPokemon(){
     .catch(error => console.error("FALLO", error));
 }
 
+function getNextPosition(){
+    let position = document.querySelector("#name").dataset.position;
+    position++;
+    if(position === 808){
+        position = 1;
+    }
+    return position;
+}
+
+function refreshCurrentPosition(position){
+    document.querySelector("#name").dataset.position = position;
+}
+
 function getPreviousPokemon(){
-    position--;
-    pagination();
+    let position = getPreviousPosition();
+    refreshCurrentPosition(position);
     fetch(`https://pokeapi.co/api/v2/pokemon/${position}/`)
         .then(answer => answer.json())
         .then(answerJSON => {
@@ -39,6 +50,15 @@ function getPreviousPokemon(){
             refreshStatBars(answerJSON);
         })
     .catch(error => console.error("FALLO", error));
+}
+
+function getPreviousPosition(){
+    let position = document.querySelector("#name").dataset.position;
+    position--;
+    if(position === 0){
+        position = 807;
+    }
+    return position;
 }
 
 function searchPokemon(){
@@ -46,13 +66,14 @@ function searchPokemon(){
     fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
         .then(answer => answer.json())
         .then(answerJSON => {
-            position = answerJSON.id;
+            let position = answerJSON.id;
+            refreshCurrentPosition(position);
             removeErrorStyles();
             showBasicInfo(answerJSON);
             refreshStatBars(answerJSON);
         })
     .catch(error => {
-        position = 1;
+        refreshCurrentPosition("1");
         addErrorStyles();
         console.error("FALLO", error);
     });
@@ -60,7 +81,6 @@ function searchPokemon(){
 
 function showBasicInfo(answerJSON){
     document.querySelector("#image").src = answerJSON.sprites["front_default"];
-    document.querySelector("#name").innerText = `Name: ${answerJSON.name}`;
     document.querySelector("#name").innerText = `Name: ${answerJSON.name} #${answerJSON.id}`;
     document.querySelector("#height").innerText = `Height: ${answerJSON.height}`;
     document.querySelector("#weight").innerText = `Weight: ${answerJSON.weight}`;
@@ -164,13 +184,5 @@ function removeErrorStyles(){
         document.querySelector("#item-3").className = "no-error";
         document.querySelector("#image").style.height = "";
         document.querySelector("#image").style.padding = "";
-    }
-}
-
-function pagination(){
-    if(position === 808){
-        position = 1;
-    }else if(position === 0){
-        position = 807;
     }
 }
