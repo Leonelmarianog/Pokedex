@@ -62,7 +62,7 @@ function getPreviousPosition() {
 }
 
 function searchPokemon() {
-  const pokemonName = document.querySelector('input').value;
+  const pokemonName = document.querySelector('input').value.toLowerCase();
   fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
     .then((answer) => answer.json())
     .then((answerJSON) => {
