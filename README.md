@@ -1,10 +1,5 @@
 # Pokedex
 
-Made using HTML5, CSS3 and Javascript.
+Made using HTML5, CSS3 and JavaScript.
 
-CSS Concepts used:
-
-- CSS Grid
-- Flexbox
-- Animations
-- Media Queries
+[Pokedex](https://leonelmarianog.github.io/Pokedex/).
