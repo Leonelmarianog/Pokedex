@@ -7,8 +7,7 @@ function getFirstPokemon() {
   fetch('https://pokeapi.co/api/v2/pokemon/1/')
     .then((answer) => answer.json())
     .then((answerJSON) => {
-      showBasicInfo(answerJSON);
-      refreshStatBars(answerJSON);
+      showPokemonInfo(answerJSON);
     })
     .catch((error) => console.error('FALLO', error));
 }
@@ -19,9 +18,8 @@ function getNextPokemon() {
   fetch(`https://pokeapi.co/api/v2/pokemon/${position}/`)
     .then((answer) => answer.json())
     .then((answerJSON) => {
-      removeErrorStyles();
-      showBasicInfo(answerJSON);
-      refreshStatBars(answerJSON);
+      removeDisplayError();
+      showPokemonInfo(answerJSON);
     })
     .catch((error) => console.error('FALLO', error));
 }
@@ -45,9 +43,8 @@ function getPreviousPokemon() {
   fetch(`https://pokeapi.co/api/v2/pokemon/${position}/`)
     .then((answer) => answer.json())
     .then((answerJSON) => {
-      removeErrorStyles();
-      showBasicInfo(answerJSON);
-      refreshStatBars(answerJSON);
+      removeDisplayError();
+      showPokemonInfo(answerJSON);
     })
     .catch((error) => console.error('FALLO', error));
 }
@@ -68,53 +65,61 @@ function searchPokemon() {
     .then((answerJSON) => {
       const position = answerJSON.id;
       refreshCurrentPosition(position);
-      removeErrorStyles();
-      showBasicInfo(answerJSON);
-      refreshStatBars(answerJSON);
+      removeDisplayError();
+      showPokemonInfo(answerJSON);
     })
     .catch((error) => {
       refreshCurrentPosition('1');
-      addErrorStyles();
+      addDisplayError();
+      removePokemonInfo();
       console.error('FALLO', error);
     });
 }
 
-function showBasicInfo(answerJSON) {
-  document.querySelector('#image').src = answerJSON.sprites.front_default;
-  document.querySelector('#name').innerText = `Name: ${answerJSON.name} #${answerJSON.id}`;
-  document.querySelector('#height').innerText = `Height: ${answerJSON.height}`;
-  document.querySelector('#weight').innerText = `Weight: ${answerJSON.weight}`;
+function showPokemonInfo(answerJSON) {
+  const photo = answerJSON.sprites.front_default;
+  const { name } = answerJSON;
+  const { id } = answerJSON;
+  const { height } = answerJSON;
+  const { weight } = answerJSON;
+  const types = checkPokemonTypes(answerJSON);
+  const stats = {
+    'hp-value': answerJSON.stats[5].base_stat,
+    'attack-value': answerJSON.stats[4].base_stat,
+    'defense-value': answerJSON.stats[3].base_stat,
+    'speed-value': answerJSON.stats[0].base_stat,
+    'special-attack-value': answerJSON.stats[2].base_stat,
+    'special-defense-value': answerJSON.stats[1].base_stat,
+  };
 
-  const types = getTypes(answerJSON);
-
+  document.querySelector('#image').src = photo;
+  document.querySelector('#name').innerText = `Name: ${name} #${id}`;
+  document.querySelector('#height').innerText = `Height: ${height}`;
+  document.querySelector('#weight').innerText = `Weight: ${weight}`;
   document.querySelector('#first-type').innerText = types['first-type'];
   document.querySelector('#second-type').innerText = types['second-type'];
 
-  addTypeStyles(types);
-  removeEmptyTypeStyle();
+  document.querySelector('#hp-value').innerText = stats['hp-value'];
+  document.querySelector('#attack-value').innerText = stats['attack-value'];
+  document.querySelector('#defense-value').innerText = stats['defense-value'];
+  document.querySelector('#speed-value').innerText = stats['speed-value'];
+  document.querySelector('#special-attack-value').innerText = stats['special-attack-value'];
+  document.querySelector('#special-defense-value').innerText = stats['special-defense-value'];
+
+  managePokemonTypeStyles(types);
+  refreshStatBars(stats);
 }
 
-function refreshStatBars(answerJSON) {
-  document.querySelector('#hp').style.width = `${Math.min(answerJSON.stats[5].base_stat, 100)}%`;
-  document.querySelector('#attack').style.width = `${Math.min(answerJSON.stats[4].base_stat, 100)}%`;
-  document.querySelector('#defense').style.width = `${Math.min(answerJSON.stats[3].base_stat, 100)}%`;
-  document.querySelector('#speed').style.width = `${Math.min(answerJSON.stats[0].base_stat, 100)}%`;
-  document.querySelector('#special-attack').style.width = `${Math.min(answerJSON.stats[2].base_stat, 100)}%`;
-  document.querySelector('#special-defense').style.width = `${Math.min(answerJSON.stats[1].base_stat, 100)}%`;
-
-  const stats = {
-    hp: answerJSON.stats[5].base_stat,
-    attack: answerJSON.stats[4].base_stat,
-    defense: answerJSON.stats[3].base_stat,
-    speed: answerJSON.stats[0].base_stat,
-    'special-attack': answerJSON.stats[2].base_stat,
-    'special-defense': answerJSON.stats[1].base_stat,
-  };
-
-  showStatsValues(stats);
+function refreshStatBars(stats) {
+  document.querySelector('#hp').style.width = `${Math.min(stats['hp-value'], 100)}%`;
+  document.querySelector('#attack').style.width = `${Math.min(stats['attack-value'], 100)}%`;
+  document.querySelector('#defense').style.width = `${Math.min(stats['defense-value'], 100)}%`;
+  document.querySelector('#speed').style.width = `${Math.min(stats['speed-value'], 100)}%`;
+  document.querySelector('#special-attack').style.width = `${Math.min(stats['special-attack-value'], 100)}%`;
+  document.querySelector('#special-defense').style.width = `${Math.min(stats['special-defense-value'], 100)}%`;
 }
 
-function getTypes(answerJSON) {
+function checkPokemonTypes(answerJSON) {
   const types = {
     'first-type': answerJSON.types[0].type.name,
     'second-type': '-',
@@ -128,32 +133,23 @@ function getTypes(answerJSON) {
   return types;
 }
 
-function addTypeStyles(types) {
+function managePokemonTypeStyles(types) {
   document.querySelector('#first-type').className = `pill-background ${types['first-type']}`;
-  document.querySelector('#second-type').className = `pill-background ${types['second-type']}`;
-}
-
-function removeEmptyTypeStyle() {
   if (document.querySelector('#second-type').innerText === '-') {
     document.querySelector('#second-type').className = '';
+  } else {
+    document.querySelector('#second-type').className = `pill-background ${types['second-type']}`;
   }
 }
 
-function showStatsValues(stats) {
-  document.querySelector('#hp-value').innerText = stats.hp;
-  document.querySelector('#attack-value').innerText = stats.attack;
-  document.querySelector('#defense-value').innerText = stats.defense;
-  document.querySelector('#speed-value').innerText = stats.speed;
-  document.querySelector('#special-attack-value').innerText = stats['special-attack'];
-  document.querySelector('#special-defense-value').innerText = stats['special-defense'];
-}
-
-function addErrorStyles() {
+function addDisplayError() {
   document.querySelector('#item-3').className = 'error';
   document.querySelector('#image').src = 'img/error.png';
   document.querySelector('#image').style.height = '5rem';
   document.querySelector('#image').style.padding = '2.5rem';
+}
 
+function removePokemonInfo() {
   document.querySelector('#name').innerText = 'Name: no-data';
   document.querySelector('#height').innerText = 'Height: no-data';
   document.querySelector('#weight').innerText = 'Weight: no-data';
@@ -178,7 +174,7 @@ function addErrorStyles() {
   document.querySelector('#special-defense').style.width = '5%';
 }
 
-function removeErrorStyles() {
+function removeDisplayError() {
   if (document.querySelector('#item-3').className === 'error') {
     document.querySelector('#item-3').className = 'no-error';
     document.querySelector('#image').style.height = '';
