@@ -15,8 +15,13 @@
         "sourceType": "module"
     },
     "rules": {
-        "no-use-before-define": ["error", { "functions": false }],
-        "linebreak-style": ["error", "windows"],
+        "import/extensions": [
+            "error",
+            {
+              "js": "always",
+              "json": "sometimes"
+            }
+        ],
         "no-console": "off"
     }
 }
