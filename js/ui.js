@@ -1,4 +1,4 @@
-import checkPokemonTypes from './utilities.js';
+import { checkPokemonTypes } from './utilities.js';
 
 function managePokemonTypeStyles(types) {
   document.querySelector('#first-type').className = `pill-background ${types['first-type']}`;

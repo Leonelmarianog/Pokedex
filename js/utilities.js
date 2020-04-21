@@ -1,4 +1,4 @@
-export default function checkPokemonTypes(answerJSON) {
+export function checkPokemonTypes(answerJSON) {
   const types = {
     'first-type': answerJSON.types[0].type.name,
     'second-type': '-',
@@ -10,4 +10,15 @@ export default function checkPokemonTypes(answerJSON) {
 
   types['second-type'] = answerJSON.types[1].type.name;
   return types;
+}
+
+export function handleResponse(response) {
+  if (response.ok) {
+    return response.json();
+  }
+  const error = {
+    status: response.status,
+    statusText: response.statusText,
+  };
+  return Promise.reject(error);
 }
