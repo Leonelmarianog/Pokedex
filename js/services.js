@@ -11,7 +11,16 @@ import {
   refreshCurrentPosition,
 } from './pagination.js';
 
-import { handleResponse } from './utilities.js';
+function handleResponse(response) {
+  if (response.ok) {
+    return response.json();
+  }
+  const error = {
+    status: response.status,
+    statusText: response.statusText,
+  };
+  return Promise.reject(error);
+}
 
 export async function getFirstPokemon() {
   try {
