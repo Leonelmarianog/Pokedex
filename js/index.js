@@ -3,7 +3,7 @@ import {
   getNextPokemon,
   getPreviousPokemon,
   searchPokemon,
-} from './api.js';
+} from './services.js';
 
 getFirstPokemon();
 document.querySelector('#next').onclick = getNextPokemon;
