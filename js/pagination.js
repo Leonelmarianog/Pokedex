@@ -19,3 +19,15 @@ export function getPreviousPosition() {
 export function refreshCurrentPosition(position) {
   document.querySelector('#name').dataset.position = position;
 }
+
+export function getPosition(event) {
+  let position;
+  if (event.currentTarget.id === 'next') {
+    position = getNextPosition();
+  }
+  if (event.currentTarget.id === 'back') {
+    position = getPreviousPosition();
+  }
+  refreshCurrentPosition(position);
+  return position;
+}
