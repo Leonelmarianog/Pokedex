@@ -155,6 +155,11 @@ body {
     height: 10rem;
 }
 
+#loading {
+    position: absolute;
+    font-size: 2rem;
+}
+
 .no-error {
     background: rgb(110, 175, 228);
     border-radius: 2.5%;

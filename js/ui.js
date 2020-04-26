@@ -103,3 +103,8 @@ export function removeDisplayError() {
     document.querySelector('#image').style.padding = '';
   }
 }
+
+export function showLoadingText(text) {
+  document.querySelector('#image').src = '';
+  document.querySelector('#loading').innerText = text;
+}
