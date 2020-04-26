@@ -1,4 +1,4 @@
-export function getNextPosition() {
+function getNextPosition() {
   let position = Number(document.querySelector('#name').dataset.position);
   position += 1;
   if (position === 808) {
@@ -7,7 +7,7 @@ export function getNextPosition() {
   return position;
 }
 
-export function getPreviousPosition() {
+function getPreviousPosition() {
   let position = Number(document.querySelector('#name').dataset.position);
   position -= 1;
   if (position === 0) {
