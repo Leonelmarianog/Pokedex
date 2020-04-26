@@ -9,9 +9,8 @@ import {
 } from './ui.js';
 
 import {
-  getNextPosition,
-  getPreviousPosition,
   refreshCurrentPosition,
+  getPosition,
 } from './pagination.js';
 
 export async function getFirstPokemon() {
@@ -24,11 +23,10 @@ export async function getFirstPokemon() {
   }
 }
 
-export async function getNextPokemon() {
+export async function getNextPokemon(e) {
   try {
     showLoadingText('Loading...');
-    const position = getNextPosition();
-    refreshCurrentPosition(position);
+    const position = getPosition(e);
     const pokemon = await getPokemon(position);
     removeDisplayError();
     showLoadingText('');
@@ -38,11 +36,10 @@ export async function getNextPokemon() {
   }
 }
 
-export async function getPreviousPokemon() {
+export async function getPreviousPokemon(e) {
   try {
     showLoadingText('Loading...');
-    const position = getPreviousPosition();
-    refreshCurrentPosition(position);
+    const position = getPosition(e);
     const pokemon = await getPokemon(position);
     removeDisplayError();
     showLoadingText('');
