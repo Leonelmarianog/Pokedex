@@ -1,4 +1,4 @@
-import getPokemon from './api.js';
+import getPokemonFromAPI from './api.js';
 
 import {
   showPokemonInfo,
@@ -15,7 +15,7 @@ import {
 
 export async function getFirstPokemon() {
   try {
-    const pokemon = await getPokemon('1');
+    const pokemon = await getPokemonFromAPI('1');
     showLoadingText('');
     showPokemonInfo(pokemon);
   } catch (error) {
@@ -27,7 +27,7 @@ export async function showNewPokemon(e) {
   try {
     showLoadingText('Loading...');
     const position = getPosition(e);
-    const pokemon = await getPokemon(position);
+    const pokemon = await getPokemonFromAPI(position);
     removeDisplayError();
     showLoadingText('');
     showPokemonInfo(pokemon);
@@ -40,7 +40,7 @@ export async function searchPokemon() {
   try {
     showLoadingText('Loading...');
     const pokemonName = document.querySelector('input').value.toLowerCase();
-    const pokemon = await getPokemon(pokemonName);
+    const pokemon = await getPokemonFromAPI(pokemonName);
     const position = pokemon.id;
     refreshCurrentPosition(position);
     removeDisplayError();
