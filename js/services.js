@@ -23,20 +23,7 @@ export async function getFirstPokemon() {
   }
 }
 
-export async function getNextPokemon(e) {
-  try {
-    showLoadingText('Loading...');
-    const position = getPosition(e);
-    const pokemon = await getPokemon(position);
-    removeDisplayError();
-    showLoadingText('');
-    showPokemonInfo(pokemon);
-  } catch (error) {
-    console.log('ERROR', error);
-  }
-}
-
-export async function getPreviousPokemon(e) {
+export async function showNewPokemon(e) {
   try {
     showLoadingText('Loading...');
     const position = getPosition(e);
