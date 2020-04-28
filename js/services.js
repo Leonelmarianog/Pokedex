@@ -2,8 +2,6 @@ import getPokemonFromAPI from './api.js';
 
 import {
   showPokemonInfo,
-  addDisplayError,
-  removePokemonInfo,
   removeDisplayError,
   showLoadingText,
 } from './ui.js';
@@ -46,20 +44,12 @@ export async function showNewPokemon(e) {
 }
 
 export async function searchPokemon() {
-  try {
-    showLoadingText('Loading...');
-    const pokemonName = document.querySelector('input').value.toLowerCase();
-    const pokemon = await getPokemonFromAPI(pokemonName);
-    const position = pokemon.id;
-    refreshCurrentPosition(position);
-    removeDisplayError();
-    showLoadingText('');
-    showPokemonInfo(pokemon);
-  } catch (error) {
-    showLoadingText('');
-    refreshCurrentPosition('1');
-    addDisplayError();
-    removePokemonInfo();
-    console.log('ERROR', error);
-  }
+  removeDisplayError();
+  showLoadingText('Loading...');
+  const input = document.querySelector('input').value.toLowerCase();
+  const pokemon = await getPokemon(input);
+  const position = pokemon.id;
+  refreshCurrentPosition(position);
+  showLoadingText('');
+  showPokemonInfo(pokemon);
 }
