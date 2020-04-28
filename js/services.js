@@ -9,6 +9,11 @@ import {
 } from './ui.js';
 
 import {
+  getPokemonFromStorage,
+  savePokemonInStorage,
+} from './storage.js';
+
+import {
   refreshCurrentPosition,
   getPosition,
 } from './pagination.js';
@@ -16,10 +21,12 @@ import {
 // eslint-disable-next-line consistent-return
 async function getPokemon(position) {
   try {
-    const pokemon = await getPokemonFromAPI(position);
+    const pokemon = getPokemonFromStorage(position);
     return pokemon;
   } catch (error) {
-    console.log('ERROR', error);
+    const pokemon = await getPokemonFromAPI(position);
+    savePokemonInStorage(pokemon);
+    return pokemon;
   }
 }
 
