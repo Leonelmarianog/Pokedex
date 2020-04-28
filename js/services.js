@@ -30,13 +30,10 @@ async function getPokemon(position) {
 }
 
 export async function showFirstPokemon() {
-  try {
-    const pokemon = await getPokemonFromAPI('1');
-    showLoadingText('');
-    showPokemonInfo(pokemon);
-  } catch (error) {
-    console.log('ERROR', error);
-  }
+  showLoadingText('Loading...');
+  const pokemon = await getPokemon('1');
+  showLoadingText('');
+  showPokemonInfo(pokemon);
 }
 
 export async function showNewPokemon(e) {
