@@ -18,7 +18,6 @@ import {
   getPosition,
 } from './pagination.js';
 
-// eslint-disable-next-line consistent-return
 async function getPokemon(position) {
   try {
     const pokemon = getPokemonFromStorage(position);
@@ -30,7 +29,7 @@ async function getPokemon(position) {
   }
 }
 
-export async function getFirstPokemon() {
+export async function showFirstPokemon() {
   try {
     const pokemon = await getPokemonFromAPI('1');
     showLoadingText('');

@@ -1,10 +1,10 @@
 import {
-  getFirstPokemon,
+  showFirstPokemon,
   showNewPokemon,
   searchPokemon,
 } from './services.js';
 
-getFirstPokemon();
+showFirstPokemon();
 document.querySelector('#next').onclick = showNewPokemon;
 document.querySelector('#back').onclick = showNewPokemon;
 document.querySelector('#search').onclick = searchPokemon;
