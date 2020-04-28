@@ -1,6 +1,7 @@
 import {
   addDisplayError,
   removePokemonInfo,
+  showLoadingText,
 } from './ui.js';
 
 import {
@@ -25,6 +26,7 @@ export default async function getPokemon(id) {
     const responseJSON = await handleResponse(response);
     return responseJSON;
   } catch (e) {
+    showLoadingText('');
     addDisplayError();
     removePokemonInfo();
     refreshCurrentPosition('1');
