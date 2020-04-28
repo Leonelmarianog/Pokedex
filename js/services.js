@@ -13,6 +13,16 @@ import {
   getPosition,
 } from './pagination.js';
 
+// eslint-disable-next-line consistent-return
+async function getPokemon(position) {
+  try {
+    const pokemon = await getPokemonFromAPI(position);
+    return pokemon;
+  } catch (error) {
+    console.log('ERROR', error);
+  }
+}
+
 export async function getFirstPokemon() {
   try {
     const pokemon = await getPokemonFromAPI('1');
@@ -24,16 +34,12 @@ export async function getFirstPokemon() {
 }
 
 export async function showNewPokemon(e) {
-  try {
-    showLoadingText('Loading...');
-    const position = getPosition(e);
-    const pokemon = await getPokemonFromAPI(position);
-    removeDisplayError();
-    showLoadingText('');
-    showPokemonInfo(pokemon);
-  } catch (error) {
-    console.log('ERROR', error);
-  }
+  removeDisplayError();
+  showLoadingText('Loading...');
+  const position = getPosition(e);
+  const pokemon = await getPokemon(position);
+  showLoadingText('');
+  showPokemonInfo(pokemon);
 }
 
 export async function searchPokemon() {
