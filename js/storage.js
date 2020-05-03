@@ -7,6 +7,9 @@ export function getPokemonFromStorage(id) {
 }
 
 export function savePokemonInStorage(pokemon) {
+  if (pokemon === undefined) {
+    throw new Error('Pokemon is undefined');
+  }
   try {
     localStorage.setItem(`${pokemon.id}`, JSON.stringify(pokemon));
   } catch (error) {
