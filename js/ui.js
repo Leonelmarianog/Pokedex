@@ -65,7 +65,7 @@ export function showPokemonInfo(answerJSON) {
 }
 
 export function addDisplayError() {
-  document.querySelector('#item-3').className = 'error';
+  document.querySelector('#display').className = 'error';
   document.querySelector('#image').src = 'img/error.png';
   document.querySelector('#image').style.height = '5rem';
   document.querySelector('#image').style.padding = '2.5rem';
@@ -97,8 +97,8 @@ export function removePokemonInfo() {
 }
 
 export function removeDisplayError() {
-  if (document.querySelector('#item-3').className === 'error') {
-    document.querySelector('#item-3').className = 'no-error';
+  if (document.querySelector('#display').className === 'error') {
+    document.querySelector('#display').className = 'no-error';
     document.querySelector('#image').style.height = '';
     document.querySelector('#image').style.padding = '';
   }
