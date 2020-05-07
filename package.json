@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "http-server"
+    "test:ui": "run-p serve test:cypress",
+    "test:ui:dev": "run-p serve test:cypress:dev",
+    "test:cypress": "cypress run",
+    "test:cypress:dev": "cypress open",
+    "serve": "http-server -c-1"
   },
   "repository": {
     "type": "git",
