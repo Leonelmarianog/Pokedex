@@ -40,9 +40,6 @@ describe('Pokedex', () => {
     const SPECIAL_ATTACK = '65';
     const SPECIAL_DEFENSE = '65';
 
-    cy.get('#loading')
-      .should('have.text', 'Loading...');
-
     cy.get('#image')
       .should('have.attr', 'src', IMAGE);
 
