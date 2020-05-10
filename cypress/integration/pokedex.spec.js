@@ -12,6 +12,9 @@ describe('Pokedex', () => {
         fetchPolyfill = response.body;
       });
 
+    cy.server();
+    cy.route('https://pokeapi.co/api/v2/pokemon/1/', 'fixtures:bulbasaur').as('getBulbasaur');
+
     cy.visit('http://127.0.0.1:8080/', {
       onBeforeLoad(contentWindow) {
         // eslint-disable-next-line no-param-reassign
@@ -36,9 +39,6 @@ describe('Pokedex', () => {
     const SPEED = '45';
     const SPECIAL_ATTACK = '65';
     const SPECIAL_DEFENSE = '65';
-
-    cy.server();
-    cy.route('https://pokeapi.co/api/v2/pokemon/bulbasaur', 'fixtures: bulbasaur').as('getBulbasaur');
 
     cy.get('#loading')
       .should('have.text', 'Loading...');
@@ -131,8 +131,7 @@ describe('Pokedex', () => {
     const SPECIAL_DEFENSE = '80';
 
     cy.server();
-    cy.route('https://pokeapi.co/api/v2/pokemon/ivysaur', 'fixture:ivysaur')
-      .as('getIvysaur');
+    cy.route('https://pokeapi.co/api/v2/pokemon/2/', 'fixture:ivysaur').as('getIvysaur');
 
     cy.get('#next').click();
 
@@ -201,7 +200,7 @@ describe('Pokedex', () => {
 
   it('Show a single-type pokemon', () => {
     cy.server();
-    cy.route('https://pokeapi.co/api/v2/pokemon/charmander', 'fixture:charmander')
+    cy.route('https://pokeapi.co/api/v2/pokemon/4/', 'fixture:charmander')
       .as('getCharmander');
 
     cy.get('#next').click().click().click();
@@ -215,7 +214,7 @@ describe('Pokedex', () => {
     const NAME = 'Name: bulbasaur #1';
 
     cy.server();
-    cy.route('https://pokeapi.co/api/v2/pokemon/bulbasaur', 'fixture:bulbasaur')
+    cy.route('https://pokeapi.co/api/v2/pokemon/bulbasaur/', 'fixture:bulbasaur')
       .as('getBulbasaur');
 
     cy.get('input').type('bulbasaur');
@@ -232,7 +231,7 @@ describe('Pokedex', () => {
     const NAME = 'Name: charmander #4';
 
     cy.server();
-    cy.route('https://pokeapi.co/api/v2/pokemon/4', 'fixture:charmander')
+    cy.route('https://pokeapi.co/api/v2/pokemon/4/', 'fixture:charmander')
       .as('getCharmander');
 
     cy.get('input').clear();
