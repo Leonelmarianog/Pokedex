@@ -4,6 +4,8 @@ import {
   showPokemonInfo,
   removeDisplayError,
   showLoadingText,
+  addDisplayError,
+  removePokemonInfo,
 } from './ui.js';
 
 import {
@@ -28,28 +30,50 @@ async function getPokemon(position) {
 }
 
 export async function showFirstPokemon() {
-  showLoadingText('Loading...');
-  const pokemon = await getPokemon('1');
-  showLoadingText('');
-  showPokemonInfo(pokemon);
+  try {
+    showLoadingText('Loading...');
+    const pokemon = await getPokemon('1');
+    showLoadingText('');
+    showPokemonInfo(pokemon);
+  } catch (error) {
+    showLoadingText('');
+    addDisplayError();
+    removePokemonInfo();
+    refreshCurrentPosition('1');
+  }
 }
 
 export async function showNewPokemon(e) {
-  removeDisplayError();
-  showLoadingText('Loading...');
-  const position = getPosition(e);
-  const pokemon = await getPokemon(position);
-  showLoadingText('');
-  showPokemonInfo(pokemon);
+  try {
+    removeDisplayError();
+    showLoadingText('Loading...');
+    const position = getPosition(e);
+    const pokemon = await getPokemon(position);
+    showLoadingText('');
+    showPokemonInfo(pokemon);
+  } catch (error) {
+    showLoadingText('');
+    addDisplayError();
+    removePokemonInfo();
+    refreshCurrentPosition('1');
+  }
 }
 
 export async function searchPokemon() {
-  removeDisplayError();
-  showLoadingText('Loading...');
-  const input = document.querySelector('input').value.toLowerCase();
-  const pokemon = await getPokemon(input);
-  const position = pokemon.id;
-  refreshCurrentPosition(position);
-  showLoadingText('');
-  showPokemonInfo(pokemon);
+  try {
+    removeDisplayError();
+    showLoadingText('Loading...');
+    const input = document.querySelector('input').value.toLowerCase();
+    const pokemon = await getPokemon(input);
+    const position = pokemon.id;
+    refreshCurrentPosition(position);
+    showLoadingText('');
+    showPokemonInfo(pokemon);
+  } catch (error) {
+    console.log(error);
+    showLoadingText('');
+    addDisplayError();
+    removePokemonInfo();
+    refreshCurrentPosition('1');
+  }
 }
