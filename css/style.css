@@ -6,7 +6,7 @@ html, body {
 }
 
 body {
-    background: url(../img/thumb-1920-662118.png);
+    background: url(../img/background.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
