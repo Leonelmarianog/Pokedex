@@ -13,7 +13,7 @@ describe('Pokedex', () => {
       });
 
     cy.server();
-    cy.route('https://pokeapi.co/api/v2/pokemon/1/', 'fixtures:bulbasaur').as('getBulbasaur');
+    cy.route('https://pokeapi.co/api/v2/pokemon/1/', 'fixture:bulbasaur').as('getBulbasaur');
 
     cy.visit('http://127.0.0.1:8080/', {
       onBeforeLoad(contentWindow) {
