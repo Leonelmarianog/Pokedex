@@ -44,33 +44,23 @@ export async function showFirstPokemon() {
 }
 
 export async function showNewPokemon(e) {
+  removeDisplayError();
+  showLoadingText('Loading...');
   try {
-    removeDisplayError();
-    showLoadingText('Loading...');
-    const position = getPosition(e);
-    const pokemon = await getPokemon(position);
-    showLoadingText('');
-    showPokemonInfo(pokemon);
+    if (e.currentTarget.id === 'search') {
+      const input = document.querySelector('input').value.toLowerCase();
+      const pokemon = await getPokemon(input);
+      const position = pokemon.id;
+      refreshCurrentPosition(position);
+      showLoadingText('');
+      showPokemonInfo(pokemon);
+    } else {
+      const position = getPosition(e);
+      const pokemon = await getPokemon(position);
+      showLoadingText('');
+      showPokemonInfo(pokemon);
+    }
   } catch (error) {
-    showLoadingText('');
-    addDisplayError();
-    removePokemonInfo();
-    refreshCurrentPosition('1');
-  }
-}
-
-export async function searchPokemon() {
-  try {
-    removeDisplayError();
-    showLoadingText('Loading...');
-    const input = document.querySelector('input').value.toLowerCase();
-    const pokemon = await getPokemon(input);
-    const position = pokemon.id;
-    refreshCurrentPosition(position);
-    showLoadingText('');
-    showPokemonInfo(pokemon);
-  } catch (error) {
-    console.log(error);
     showLoadingText('');
     addDisplayError();
     removePokemonInfo();
