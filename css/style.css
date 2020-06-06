@@ -429,7 +429,6 @@ input {
     }
     
     #close-modal {
-        position: absolute;
         bottom: 3rem;
         right: 7rem;
         width: 5rem;
