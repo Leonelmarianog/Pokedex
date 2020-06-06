@@ -16,6 +16,8 @@ import {
   getPosition,
 } from './pagination.js';
 
+import validateInput from './utilities.js';
+
 async function getPokemon(position) {
   try {
     const pokemon = getPokemonFromStorage(position);
@@ -44,6 +46,7 @@ export async function showNewPokemon(e) {
   try {
     if (e.currentTarget.id === 'search') {
       const input = document.querySelector('input').value.toLowerCase();
+      validateInput(input);
       const pokemon = await getPokemon(input);
       const position = pokemon.id;
       refreshCurrentPosition(position);
