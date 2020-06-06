@@ -108,3 +108,9 @@ export function showLoadingText(text) {
   document.querySelector('#image').src = '';
   document.querySelector('#loading').innerText = text;
 }
+
+export function showModal(image, text) {
+  document.querySelector('#modal').style.display('flex');
+  document.querySelector('modal-img').src = image;
+  document.querySelector('modal-text').innerText = text;
+}
