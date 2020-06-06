@@ -2,10 +2,7 @@ import getPokemonFromAPI from './api.js';
 
 import {
   showPokemonInfo,
-  removeDisplayError,
   showLoadingText,
-  addDisplayError,
-  removePokemonInfo,
   showModal,
 } from './ui.js';
 
@@ -39,12 +36,10 @@ export async function showFirstPokemon() {
   } catch (error) {
     showLoadingText('');
     showModal(error.image, error.message);
-    refreshCurrentPosition('1');
   }
 }
 
 export async function showNewPokemon(e) {
-  removeDisplayError();
   showLoadingText('Loading...');
   try {
     if (e.currentTarget.id === 'search') {
@@ -63,6 +58,5 @@ export async function showNewPokemon(e) {
   } catch (error) {
     showLoadingText('');
     showModal(error.image, error.message);
-    refreshCurrentPosition('1');
   }
 }

@@ -64,48 +64,7 @@ export function showPokemonInfo(answerJSON) {
   refreshStatBars(stats);
 }
 
-export function addDisplayError() {
-  document.querySelector('#display').className = 'error';
-  document.querySelector('#image').src = 'img/error.png';
-  document.querySelector('#image').style.height = '5rem';
-  document.querySelector('#image').style.padding = '2.5rem';
-}
-
-export function removePokemonInfo() {
-  document.querySelector('#name').innerText = 'Name: no-data';
-  document.querySelector('#height').innerText = 'Height: no-data';
-  document.querySelector('#weight').innerText = 'Weight: no-data';
-  document.querySelector('#first-type').innerText = 'no-data';
-  document.querySelector('#second-type').innerText = 'no-data';
-
-  document.querySelector('#first-type').className = '';
-  document.querySelector('#second-type').className = '';
-
-  document.querySelector('#hp-value').innerText = 'no-data';
-  document.querySelector('#attack-value').innerText = 'no-data';
-  document.querySelector('#defense-value').innerText = 'no-data';
-  document.querySelector('#speed-value').innerText = 'no-data';
-  document.querySelector('#special-attack-value').innerText = 'no-data';
-  document.querySelector('#special-defense-value').innerText = 'no-data';
-
-  document.querySelector('#hp').style.width = '5%';
-  document.querySelector('#attack').style.width = '5%';
-  document.querySelector('#defense').style.width = '5%';
-  document.querySelector('#speed').style.width = '5%';
-  document.querySelector('#special-attack').style.width = '5%';
-  document.querySelector('#special-defense').style.width = '5%';
-}
-
-export function removeDisplayError() {
-  if (document.querySelector('#display').className === 'error') {
-    document.querySelector('#display').className = 'no-error';
-    document.querySelector('#image').style.height = '';
-    document.querySelector('#image').style.padding = '';
-  }
-}
-
 export function showLoadingText(text) {
-  document.querySelector('#image').src = '';
   document.querySelector('#loading').innerText = text;
 }
 
