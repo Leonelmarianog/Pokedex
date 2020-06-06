@@ -30,8 +30,8 @@ async function getPokemon(position) {
 }
 
 export async function showFirstPokemon() {
+  showLoadingText('Loading...');
   try {
-    showLoadingText('Loading...');
     const pokemon = await getPokemon('1');
     showLoadingText('');
     showPokemonInfo(pokemon);
