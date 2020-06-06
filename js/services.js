@@ -6,6 +6,7 @@ import {
   showLoadingText,
   addDisplayError,
   removePokemonInfo,
+  showModal,
 } from './ui.js';
 
 import {
@@ -37,8 +38,7 @@ export async function showFirstPokemon() {
     showPokemonInfo(pokemon);
   } catch (error) {
     showLoadingText('');
-    addDisplayError();
-    removePokemonInfo();
+    showModal(error.image, error.message);
     refreshCurrentPosition('1');
   }
 }
@@ -62,8 +62,7 @@ export async function showNewPokemon(e) {
     }
   } catch (error) {
     showLoadingText('');
-    addDisplayError();
-    removePokemonInfo();
+    showModal(error.image, error.message);
     refreshCurrentPosition('1');
   }
 }

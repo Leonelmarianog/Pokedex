@@ -5,6 +5,8 @@ function handleResponse(response) {
   const error = {
     status: response.status,
     statusText: response.statusText,
+    image: 'img/worried-pikachu.png',
+    message: 'Sorry, something went wrong! Try again in a few minutes!.',
   };
   return Promise.reject(error);
 }
