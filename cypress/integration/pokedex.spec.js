@@ -128,12 +128,19 @@ describe('Pokedex', () => {
     const SPECIAL_DEFENSE = '80';
 
     cy.server();
-    cy.route('https://pokeapi.co/api/v2/pokemon/2/', 'fixture:ivysaur').as('getIvysaur');
+    cy.route(
+      {
+        url: 'https://pokeapi.co/api/v2/pokemon/2/',
+        response: 'fixture:ivysaur',
+      },
+    ).as('getIvysaur');
 
-    cy.get('#next').click();
-
-    cy.get('#loading')
-      .should('have.text', 'Loading...');
+    cy.get('#next')
+      .click()
+      .then(() => {
+        cy.get('#loading')
+          .should('have.text', 'Loading...');
+      });
 
     cy.get('#image')
       .should('have.attr', 'src', IMAGE);
