@@ -1,20 +1,10 @@
 import getPokemonFromAPI from './api.js';
 
-import {
-  showPokemonInfo,
-  showLoadingText,
-  showModal,
-} from './ui.js';
+import { showPokemonInfo, showLoadingText, showModal } from './ui.js';
 
-import {
-  getPokemonFromStorage,
-  savePokemonInStorage,
-} from './storage.js';
+import { getPokemonFromStorage, savePokemonInStorage } from './storage.js';
 
-import {
-  refreshCurrentPosition,
-  getPosition,
-} from './pagination.js';
+import { refreshCurrentPosition, getPosition } from './pagination.js';
 
 import validateInput from './utilities.js';
 
@@ -60,6 +50,7 @@ export async function showNewPokemon(e) {
     }
   } catch (error) {
     showLoadingText('');
+    console.log(error.image);
     showModal(error.image, error.message);
   }
 }
