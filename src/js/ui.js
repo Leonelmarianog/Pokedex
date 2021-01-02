@@ -1,71 +1,62 @@
-function checkPokemonTypes(answerJSON) {
-  const types = {
-    'first-type': answerJSON.types[0].type.name,
-    'second-type': '-',
-  };
-
-  if (answerJSON.types[1] === undefined) {
-    return types;
-  }
-
-  types['second-type'] = answerJSON.types[1].type.name;
-  return types;
+function displayBasicInfo(id, name, height, weight, image) {
+  document.querySelector('#name').textContent = `Name: ${name} #${id}`;
+  document.querySelector('#height').textContent = `Height: ${height}`;
+  document.querySelector('#weight').textContent = `Weight: ${weight}`;
+  document.querySelector('#image').src = image;
 }
 
-function managePokemonTypeStyles(types) {
-  document.querySelector('#first-type').className = `pill-background ${types['first-type']}`;
-  if (document.querySelector('#second-type').innerText === '-') {
-    document.querySelector('#second-type').className = '';
+function displayTypes(types) {
+  const typesContainer = document.querySelector('#types');
+
+  if (typesContainer.children.length !== 0) {
+    typesContainer.innerHTML = '';
+  }
+
+  for (let i = 0; i < types.length; i += 1) {
+    const type = document.createElement('div');
+    type.textContent = types[i].name;
+    type.className = `pill-background ${types[i].name}`;
+    typesContainer.appendChild(type);
+  }
+}
+
+function displayStats(stats) {
+  document.querySelector('#hp-value').textContent = stats[0].value;
+  document.querySelector('#hp').style.width = `${Math.min(stats[0].value, 100)}%`;
+
+  document.querySelector('#attack-value').textContent = stats[1].value;
+  document.querySelector('#attack').style.width = `${Math.min(stats[1].value, 100)}%`;
+
+  document.querySelector('#defense-value').textContent = stats[2].value;
+  document.querySelector('#defense').style.width = `${Math.min(stats[2].value, 100)}%`;
+
+  document.querySelector('#speed-value').textContent = stats[3].value;
+  document.querySelector('#speed').style.width = `${Math.min(stats[3].value, 100)}%`;
+
+  document.querySelector('#special-attack-value').textContent = stats[4].value;
+  document.querySelector('#special-attack').style.width = `${Math.min(stats[4].value, 100)}%`;
+
+  document.querySelector('#special-defense-value').textContent = stats[5].value;
+  document.querySelector('#special-defense').style.width = `${Math.min(stats[5].value, 100)}%`;
+}
+
+export function displayPokemon({ id, name, height, weight, image, types, stats }) {
+  displayBasicInfo(id, name, height, weight, image);
+  displayTypes(types);
+  displayStats(stats);
+}
+
+export function setLoading(status) {
+  if (!status) {
+    document.querySelector('#loading').textContent = '';
   } else {
-    document.querySelector('#second-type').className = `pill-background ${types['second-type']}`;
+    document.querySelector('#loading').textContent = 'Loading...';
   }
 }
 
-function refreshStatBars(stats) {
-  document.querySelector('#hp').style.width = `${Math.min(stats['hp-value'], 100)}%`;
-  document.querySelector('#attack').style.width = `${Math.min(stats['attack-value'], 100)}%`;
-  document.querySelector('#defense').style.width = `${Math.min(stats['defense-value'], 100)}%`;
-  document.querySelector('#speed').style.width = `${Math.min(stats['speed-value'], 100)}%`;
-  document.querySelector('#special-attack').style.width = `${Math.min(stats['special-attack-value'], 100)}%`;
-  document.querySelector('#special-defense').style.width = `${Math.min(stats['special-defense-value'], 100)}%`;
-}
-
-export function showPokemonInfo(answerJSON) {
-  const photo = answerJSON.sprites.front_default;
-  const { name } = answerJSON;
-  const { id } = answerJSON;
-  const { height } = answerJSON;
-  const { weight } = answerJSON;
-  const types = checkPokemonTypes(answerJSON);
-  const stats = {
-    'hp-value': answerJSON.stats[5].base_stat,
-    'attack-value': answerJSON.stats[4].base_stat,
-    'defense-value': answerJSON.stats[3].base_stat,
-    'speed-value': answerJSON.stats[0].base_stat,
-    'special-attack-value': answerJSON.stats[2].base_stat,
-    'special-defense-value': answerJSON.stats[1].base_stat,
-  };
-
-  document.querySelector('#image').src = photo;
-  document.querySelector('#name').innerText = `Name: ${name} #${id}`;
-  document.querySelector('#height').innerText = `Height: ${height}`;
-  document.querySelector('#weight').innerText = `Weight: ${weight}`;
-  document.querySelector('#first-type').innerText = types['first-type'];
-  document.querySelector('#second-type').innerText = types['second-type'];
-
-  document.querySelector('#hp-value').innerText = stats['hp-value'];
-  document.querySelector('#attack-value').innerText = stats['attack-value'];
-  document.querySelector('#defense-value').innerText = stats['defense-value'];
-  document.querySelector('#speed-value').innerText = stats['speed-value'];
-  document.querySelector('#special-attack-value').innerText = stats['special-attack-value'];
-  document.querySelector('#special-defense-value').innerText = stats['special-defense-value'];
-
-  managePokemonTypeStyles(types);
-  refreshStatBars(stats);
-}
-
-export function showLoadingText(text) {
-  document.querySelector('#loading').innerText = text;
+export function closeModal() {
+  document.querySelector('#modal').style.display = 'none';
+  document.querySelector('#overlay').style.display = 'none';
 }
 
 export function showModal(image, text) {
@@ -73,9 +64,4 @@ export function showModal(image, text) {
   document.querySelector('#overlay').style.display = 'block';
   document.querySelector('#modal-img').src = image;
   document.querySelector('#modal-text').innerText = text;
-}
-
-export function closeModal() {
-  document.querySelector('#modal').style.display = 'none';
-  document.querySelector('#overlay').style.display = 'none';
 }
