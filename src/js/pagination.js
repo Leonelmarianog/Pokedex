@@ -1,33 +1,37 @@
-function getNextPosition() {
-  let position = Number(document.querySelector('#name').dataset.position);
-  position += 1;
-  if (position === 808) {
-    position = 1;
+function getNextPokemonId(currentPokemonId) {
+  let nextPokemonId = currentPokemonId + 1;
+
+  if (nextPokemonId === 899) {
+    nextPokemonId = 1;
   }
-  return position;
+
+  return nextPokemonId;
 }
 
-function getPreviousPosition() {
-  let position = Number(document.querySelector('#name').dataset.position);
-  position -= 1;
-  if (position === 0) {
-    position = 807;
+function getPreviousPokemonId(currentPokemonId) {
+  let previousPokemonId = currentPokemonId - 1;
+
+  if (previousPokemonId === 0) {
+    previousPokemonId = 898;
   }
-  return position;
+
+  return previousPokemonId;
 }
 
-export function refreshCurrentPosition(position) {
-  document.querySelector('#name').dataset.position = position;
+export function setCurrentPokemonId(currentPokemonId) {
+  document.querySelector('#name').dataset.position = currentPokemonId;
 }
 
-export function getPosition(event) {
-  let position;
-  if (event.currentTarget.id === 'next') {
-    position = getNextPosition();
+export function getNewPokemonId(action, currentPokemonId) {
+  let newPokemonId;
+
+  if (action === 'next') {
+    newPokemonId = getNextPokemonId(currentPokemonId);
   }
-  if (event.currentTarget.id === 'back') {
-    position = getPreviousPosition();
+
+  if (action === 'back') {
+    newPokemonId = getPreviousPokemonId(currentPokemonId);
   }
-  refreshCurrentPosition(position);
-  return position;
+
+  return newPokemonId;
 }
