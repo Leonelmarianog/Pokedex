@@ -1,4 +1,4 @@
-import getPokemonFromRepository from './repository.js';
+import getPokemonFromRepository from '../repository/repository.js';
 
 export default async function getPokemonById(pokemonId) {
   const pokemon = await getPokemonFromRepository(pokemonId);

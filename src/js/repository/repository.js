@@ -1,9 +1,9 @@
-import getPokemonFromAPI from './api.js';
+import getPokemonFromAPI from '../api/api.js';
 import {
   getPokemon as getPokemonFromStorage,
   savePokemon as savePokemonInStorage,
-} from './storage.js';
-import pokemonMapper from './mappers/mapper.js';
+} from '../storage/storage.js';
+import pokemonMapper from '../mappers/mapper.js';
 
 export default async function getPokemonById(pokemonId) {
   try {
