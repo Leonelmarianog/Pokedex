@@ -1,6 +1,4 @@
-import Pokemon from '../entities/Pokemon.js';
-import Stat from '../entities/Stat.js';
-import Type from '../entities/Type.js';
+import { Pokemon, Stat, Type } from '../entities/index.js';
 
 function statMapper(stats) {
   const { name } = stats.stat;

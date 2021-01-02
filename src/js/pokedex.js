@@ -1,7 +1,6 @@
 import getPokemonById from './services/service.js';
-import { setLoading, showModal, displayPokemon, closeModal } from './ui/ui.js';
-import { getNewPokemonId, setCurrentPokemonId } from './utilities/pagination.js';
-import validateInput from './utilities/validation.js';
+import { showModal, closeModal, setLoading, displayPokemon } from './ui/index.js';
+import { getNewPokemonId, setCurrentPokemonId, validateInput } from './utilities/index.js';
 
 async function loadFirstPokemon() {
   setLoading(true);
