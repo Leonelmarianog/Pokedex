@@ -1,11 +1,11 @@
-import getPokemonById from './services/service.js';
+import getPokemonByIdOrName from './services/service.js';
 import { showModal, closeModal, setLoading, displayPokemon } from './ui/index.js';
 import { getNewPokemonId, setCurrentPokemonId, validateInput } from './utilities/index.js';
 
 async function loadFirstPokemon() {
   setLoading(true);
   try {
-    const pokemon = await getPokemonById(1);
+    const pokemon = await getPokemonByIdOrName(1);
     setLoading(false);
     displayPokemon(pokemon);
     return true;
@@ -19,9 +19,9 @@ async function loadFirstPokemon() {
 async function loadRequestedPokemon() {
   setLoading(true);
   try {
-    const pokemonId = document.querySelector('input').value.toLowerCase().trim();
-    validateInput(pokemonId);
-    const pokemon = await getPokemonById(pokemonId);
+    const pokemonNameOrId = document.querySelector('input').value.toLowerCase().trim();
+    validateInput(pokemonNameOrId);
+    const pokemon = await getPokemonByIdOrName(pokemonNameOrId);
     setLoading(false);
     displayPokemon(pokemon);
     setCurrentPokemonId(pokemon.id);
@@ -39,7 +39,7 @@ async function loadNewPokemon(event) {
     const action = event.currentTarget.id;
     const currentPokemonId = Number(document.querySelector('#name').dataset.position);
     const newPokemonId = getNewPokemonId(action, currentPokemonId);
-    const pokemon = await getPokemonById(newPokemonId);
+    const pokemon = await getPokemonByIdOrName(newPokemonId);
     setLoading(false);
     displayPokemon(pokemon);
     setCurrentPokemonId(pokemon.id);

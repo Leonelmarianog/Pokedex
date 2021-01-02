@@ -5,7 +5,7 @@ import {
 } from '../storage/storage.js';
 import pokemonMapper from '../mappers/mapper.js';
 
-export default async function getPokemonById(pokemonId) {
+export default async function getPokemonByIdOrName(pokemonId) {
   try {
     const pokemonData = getPokemonFromStorage(pokemonId);
     const pokemon = pokemonMapper(pokemonData);
