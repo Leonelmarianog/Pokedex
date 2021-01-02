@@ -5,6 +5,10 @@ import {
 } from '../storage/storage.js';
 import pokemonMapper from '../mappers/mapper.js';
 
+/**
+ * @param {String|Number} pokemonId - Pokemon Name or Id Number
+ * @returns {Promise<import('../entities/Pokemon')>}
+ */
 export default async function getPokemonByIdOrName(pokemonId) {
   try {
     const pokemonData = getPokemonFromStorage(pokemonId);

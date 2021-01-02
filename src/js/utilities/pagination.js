@@ -1,3 +1,7 @@
+/**
+ * @param {Number} currentPokemonId
+ * @returns {Number}
+ */
 function getNextPokemonId(currentPokemonId) {
   let nextPokemonId = currentPokemonId + 1;
 
@@ -8,6 +12,10 @@ function getNextPokemonId(currentPokemonId) {
   return nextPokemonId;
 }
 
+/**
+ * @param {Number} currentPokemonId
+ * @returns {Number}
+ */
 function getPreviousPokemonId(currentPokemonId) {
   let previousPokemonId = currentPokemonId - 1;
 
@@ -18,10 +26,18 @@ function getPreviousPokemonId(currentPokemonId) {
   return previousPokemonId;
 }
 
+/**
+ * @param {Number} currentPokemonId
+ */
 export function setCurrentPokemonId(currentPokemonId) {
   document.querySelector('#name').dataset.position = currentPokemonId;
 }
 
+/**
+ * @param {String} action - "Next" or "Previous"
+ * @param {Number} currentPokemonId
+ * @returns {Number}
+ */
 export function getNewPokemonId(action, currentPokemonId) {
   let newPokemonId;
 

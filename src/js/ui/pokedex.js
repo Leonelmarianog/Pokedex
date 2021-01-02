@@ -1,3 +1,10 @@
+/**
+ * @param {Number} id
+ * @param {String} name
+ * @param {Number} height
+ * @param {Number} weight
+ * @param {String} image
+ */
 function displayBasicInfo(id, name, height, weight, image) {
   document.querySelector('#name').textContent = `Name: ${name} #${id}`;
   document.querySelector('#height').textContent = `Height: ${height}`;
@@ -5,6 +12,9 @@ function displayBasicInfo(id, name, height, weight, image) {
   document.querySelector('#image').src = image;
 }
 
+/**
+@param {Array<import('../entities/Type')>} types
+ */
 function displayTypes(types) {
   const typesContainer = document.querySelector('#types');
 
@@ -20,6 +30,9 @@ function displayTypes(types) {
   }
 }
 
+/**
+ * @param {Array<import('../entities/Stat')>} stats
+ */
 function displayStats(stats) {
   document.querySelector('#hp-value').textContent = stats[0].value;
   document.querySelector('#hp').style.width = `${Math.min(stats[0].value, 100)}%`;
@@ -40,6 +53,16 @@ function displayStats(stats) {
   document.querySelector('#special-defense').style.width = `${Math.min(stats[5].value, 100)}%`;
 }
 
+/**
+ * @param {Object} pokemon - Pokemon entity
+ * @param {Number} pokemon.id
+ * @param {String} pokemon.name
+ * @param {Number} pokemon.height
+ * @param {Number} pokemon.weight
+ * @param {String} pokemon.image
+ * @param {Array<import('../entities/Type')>} pokemon.types
+ * @param {Array<import('../entities/Stat')>} pokemon.stats
+ */
 export default function displayPokemon({ id, name, height, weight, image, types, stats }) {
   displayBasicInfo(id, name, height, weight, image);
   displayTypes(types);

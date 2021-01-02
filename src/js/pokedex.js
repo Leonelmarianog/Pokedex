@@ -2,6 +2,9 @@ import getPokemonByIdOrName from './services/service.js';
 import { showModal, closeModal, setLoading, displayPokemon } from './ui/index.js';
 import { getNewPokemonId, setCurrentPokemonId, validateInput } from './utilities/index.js';
 
+/**
+ * @returns {Promise<Boolean>}
+ */
 async function loadFirstPokemon() {
   setLoading(true);
   try {
@@ -16,6 +19,9 @@ async function loadFirstPokemon() {
   }
 }
 
+/**
+ * @returns {Promise<Boolean>}
+ */
 async function loadRequestedPokemon() {
   setLoading(true);
   try {
@@ -33,6 +39,10 @@ async function loadRequestedPokemon() {
   }
 }
 
+/**
+ * @param {Object} event - Event Object
+ * @returns {Promise<Boolean>}
+ */
 async function loadNewPokemon(event) {
   setLoading(true);
   try {

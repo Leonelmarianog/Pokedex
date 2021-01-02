@@ -1,22 +1,29 @@
+/**
+ * @param {String|Number} id - Pokemon Name or Id Number
+ * @returns {Object}
+ */
 export function getPokemon(id) {
-  const pokemon = JSON.parse(localStorage.getItem(id));
+  const pokemonData = JSON.parse(localStorage.getItem(id));
 
-  if (!pokemon) {
+  if (!pokemonData) {
     throw new Error('Pokemon not in storage.');
   }
 
-  return pokemon;
+  return pokemonData;
 }
 
-export function savePokemon(pokemon) {
-  if (!pokemon) {
+/**
+ * @param {Object} pokemonData
+ */
+export function savePokemon(pokemonData) {
+  if (!pokemonData) {
     throw new Error('A pokemon is needed in order to save it.');
   }
 
   try {
-    localStorage.setItem(`${pokemon.id}`, JSON.stringify(pokemon));
+    localStorage.setItem(`${pokemonData.id}`, JSON.stringify(pokemonData));
   } catch (error) {
     localStorage.clear();
-    localStorage.setItem(`${pokemon.id}`, JSON.stringify(pokemon));
+    localStorage.setItem(`${pokemonData.id}`, JSON.stringify(pokemonData));
   }
 }

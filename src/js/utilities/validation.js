@@ -1,3 +1,7 @@
+/**
+ * @param {String} input
+ * @returns {Boolean}
+ */
 export default function validateInput(input) {
   const error = new Error();
 
