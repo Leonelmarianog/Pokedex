@@ -40,28 +40,8 @@ function displayStats(stats) {
   document.querySelector('#special-defense').style.width = `${Math.min(stats[5].value, 100)}%`;
 }
 
-export function displayPokemon({ id, name, height, weight, image, types, stats }) {
+export default function displayPokemon({ id, name, height, weight, image, types, stats }) {
   displayBasicInfo(id, name, height, weight, image);
   displayTypes(types);
   displayStats(stats);
-}
-
-export function setLoading(status) {
-  if (!status) {
-    document.querySelector('#loading').textContent = '';
-  } else {
-    document.querySelector('#loading').textContent = 'Loading...';
-  }
-}
-
-export function closeModal() {
-  document.querySelector('#modal').style.display = 'none';
-  document.querySelector('#overlay').style.display = 'none';
-}
-
-export function showModal(image, text) {
-  document.querySelector('#modal').style.display = 'flex';
-  document.querySelector('#overlay').style.display = 'block';
-  document.querySelector('#modal-img').src = image;
-  document.querySelector('#modal-text').innerText = text;
 }
