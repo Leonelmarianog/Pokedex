@@ -11,7 +11,7 @@ const jsOutputFiles = `${jsOutputFolder}/*.js`;
 
 const sassInputFiles = './src/sass/**/*.scss';
 const cssOutputFiles = `${cssOutputFolder}/*.css`;
-const cssAndSassOutputFiles = [`${cssOutputFolder}/*.css`, `${cssOutputFolder}/**/*.scss`];
+const cssAndSassOutputFiles = [`${cssOutputFolder}/*`];
 
 const imgInputFiles = ['./src/img/*.jpg', './src/img/*.png'];
 const imgOutputFiles = [`${imgOutputFolder}/*.jpg`, `${imgOutputFolder}/*.png`];
