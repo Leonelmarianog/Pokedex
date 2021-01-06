@@ -27,18 +27,11 @@ function getPreviousPokemonId(currentPokemonId) {
 }
 
 /**
- * @param {Number} currentPokemonId
- */
-export function setCurrentPokemonId(currentPokemonId) {
-  document.querySelector('#name').dataset.position = currentPokemonId;
-}
-
-/**
  * @param {String} action - "Next" or "Previous"
  * @param {Number} currentPokemonId
  * @returns {Number}
  */
-export function getNewPokemonId(action, currentPokemonId) {
+export default function getNewPokemonId(action, currentPokemonId) {
   let newPokemonId;
 
   if (action === 'get-next') {
