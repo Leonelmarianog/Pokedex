@@ -1,0 +1,15 @@
+.btn {
+  background-color: $btn-inactive-bg-color;
+  padding: 0.5em 2em;
+  border-top: 0.15em solid $btn-top-left-border-color;
+  border-left: 0.15em solid $btn-top-left-border-color;
+  border-bottom: 0.15em solid $btn-bottom-right-border-color;
+  border-right: 0.15em solid $btn-bottom-right-border-color;
+  color: $btn-inactive-text-color;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.btn:active {
+  background-color: $btn-active-bg-color;
+  color: $btn-active-text-color;
+}

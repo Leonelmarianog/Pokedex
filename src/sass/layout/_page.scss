@@ -1,0 +1,10 @@
+main {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url($background-image);
+  background-size: cover;
+  font-family: $font-family;
+  text-shadow: $text-shadow;
+}

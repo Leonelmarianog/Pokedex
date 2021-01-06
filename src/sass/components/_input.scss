@@ -1,0 +1,15 @@
+.input {
+  width: 50%;
+  background-color: $input-unfocused-bg-color;
+  border: none;
+  border-radius: 1em;
+  padding: 0.25em 1em;
+  text-align: center;
+  color: $text-color;
+  transition: background-color 0.2s;
+  box-shadow: 0 0.1em 0.5em 0 $input-shadow-color-inset inset, 0 0.1em 0 0 $input-shadow-color;
+}
+
+.input:focus {
+  background-color: $input-focused-bg-color;
+}
