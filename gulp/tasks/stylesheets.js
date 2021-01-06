@@ -51,5 +51,5 @@ function minifyCSS() {
 
 module.exports = {
   runCSSTasksDev: series([cleanCSS, compileSass, copySass]),
-  runCSSTasks: series([cleanCSS, compileSass, minifyCSS, prefixCSS]),
+  runCSSTasks: series([cleanCSS, compileSass, prefixCSS, minifyCSS]),
 };
