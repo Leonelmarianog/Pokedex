@@ -19,7 +19,7 @@ const runTasksProd = series([
   startServer,
 ]);
 
-watch(['./src/css/*.css'], { usePolling: true }, isDevelopment ? runCSSTasksDev : runCSSTasks);
+watch(['./src/sass/**/*.scss'], { usePolling: true }, isDevelopment ? runCSSTasksDev : runCSSTasks);
 watch(['./index.html'], { usePolling: true }, copyHTML);
 watch(['./src/img/*.jpg', './src/img/*.png'], { usePolling: true }, runIMGTasks);
 bundler.on('update', bundleJS);
