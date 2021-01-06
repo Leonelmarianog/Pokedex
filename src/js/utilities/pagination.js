@@ -41,11 +41,11 @@ export function setCurrentPokemonId(currentPokemonId) {
 export function getNewPokemonId(action, currentPokemonId) {
   let newPokemonId;
 
-  if (action === 'next') {
+  if (action === 'get-next') {
     newPokemonId = getNextPokemonId(currentPokemonId);
   }
 
-  if (action === 'back') {
+  if (action === 'get-previous') {
     newPokemonId = getPreviousPokemonId(currentPokemonId);
   }
 

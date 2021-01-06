@@ -1,6 +1,6 @@
 import getPokemonByIdOrName from './services/service.js';
 import { showModal, closeModal, setLoading, displayPokemon } from './ui/index.js';
-import { getNewPokemonId, setCurrentPokemonId, validateInput } from './utilities/index.js';
+import { getNewPokemonId, validateInput } from './utilities/index.js';
 
 /**
  * @returns {Promise<Boolean>}
@@ -25,12 +25,11 @@ async function loadFirstPokemon() {
 async function loadRequestedPokemon() {
   setLoading(true);
   try {
-    const pokemonNameOrId = document.querySelector('input').value.toLowerCase().trim();
+    const pokemonNameOrId = document.querySelector('#pokemon-input').value.toLowerCase().trim();
     validateInput(pokemonNameOrId);
     const pokemon = await getPokemonByIdOrName(pokemonNameOrId);
     setLoading(false);
     displayPokemon(pokemon);
-    setCurrentPokemonId(pokemon.id);
     return true;
   } catch (error) {
     setLoading(false);
@@ -46,13 +45,12 @@ async function loadRequestedPokemon() {
 async function loadNewPokemon(event) {
   setLoading(true);
   try {
-    const action = event.currentTarget.id;
-    const currentPokemonId = Number(document.querySelector('#name').dataset.position);
+    const { action } = event.currentTarget.dataset;
+    const currentPokemonId = Number(document.querySelector('#id').textContent);
     const newPokemonId = getNewPokemonId(action, currentPokemonId);
     const pokemon = await getPokemonByIdOrName(newPokemonId);
     setLoading(false);
     displayPokemon(pokemon);
-    setCurrentPokemonId(pokemon.id);
     return true;
   } catch (error) {
     setLoading(false);
@@ -63,8 +61,8 @@ async function loadNewPokemon(event) {
 
 export default function init() {
   loadFirstPokemon();
-  document.querySelector('#next').addEventListener('click', loadNewPokemon);
-  document.querySelector('#back').addEventListener('click', loadNewPokemon);
-  document.querySelector('#search').addEventListener('click', loadRequestedPokemon);
-  document.querySelector('#close-modal').addEventListener('click', closeModal);
+  document.querySelector('#btn-next').addEventListener('click', loadNewPokemon);
+  document.querySelector('#btn-previous').addEventListener('click', loadNewPokemon);
+  document.querySelector('#btn-search').addEventListener('click', loadRequestedPokemon);
+  document.querySelector('#btn-close-modal').addEventListener('click', closeModal);
 }

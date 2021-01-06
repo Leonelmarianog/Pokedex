@@ -3,8 +3,8 @@
  */
 export default function setLoading(status) {
   if (!status) {
-    document.querySelector('#loading').textContent = '';
+    document.querySelector('#loading').style.display = 'none';
   } else {
-    document.querySelector('#loading').textContent = 'Loading...';
+    document.querySelector('#loading').style.display = 'block';
   }
 }
