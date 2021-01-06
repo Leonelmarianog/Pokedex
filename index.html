@@ -24,25 +24,25 @@
             <div class="pokedex">
                 <div class="pokedex-main-panel">
                     <div>
-                        <p id="name"><!-- --></p>
-                        <p id="id"><!-- --></p>
+                        <p>Name: <span id="name"><!-- --></span></p>
+                        <p>ID: <span id="id"><!-- --></span></p>
                     </div>
                     <div>
                         <p id="loading">Loading...</p>
                         <img src="<!-- -->" alt="pokemon" id="image">
                     </div>
                     <div>
-                        <p id="height"><!-- --></p>
-                        <p id="weight"><!-- --></p>
+                        <p>Height: <span id="height"><!-- --></span></p>
+                        <p>Weight: <span id="weight"><!-- --></span></p>
                     </div>
                     <div id="types">
                         <!-- -->
                     </div>
                     <div>
-                        <button class="btn" id="btn-previous">
+                        <button class="btn" id="btn-previous" data-action="get-previous">
                             <i class="fas fa-arrow-left"></i>
                         </button>
-                        <button class="btn" id="btn-next">
+                        <button class="btn" id="btn-next" data-action="get-next">
                             <i class="fas fa-arrow-right"></i>
                         </button>
                     </div>
@@ -53,6 +53,7 @@
                         </button>
                     </div>
                 </div>
+
                 <div class="pokedex-secondary-panel">
                     <div class="stat-bar">
                         <p>HP</p>
@@ -117,4 +118,5 @@
             </div>
         </main>
     </body>
+    <script src="/js/index.js"></script>
 </html>
