@@ -1,116 +1,110 @@
 <!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Pokedex</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet"> 
-    <link rel='stylesheet' type='text/css' href='./css/style.css'>
-</head>
-
-<body>
-
-    <div id="overlay"></div>
-
-    <div id="modal">
-        <div id="modal-content">
-            <img id="modal-img">
-            <p id="modal-text"></p>
-            <button id="close-modal" type="button" class="button">X</button>
-        </div>
-    </div>
-    
-    <div id="pokedex">
-
-        <div id="header">PokeAPI - Discover every Pokemon!</div>
-
-        <div id="container-1">
-            <div class="no-error" id="display">
-                <div id="loading"><!-- --></div>
-                <img id="image">
-            </div>
-            <div id="pokemon-id">
-                <div id="name" data-position="1"></div>
-            </div>
-            <div id="basic-info">
-                <div id="height-and-weight">
-                    <div id="height"></div>
-                    <div id="weight"></div>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pokedex</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">  
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
+        <link rel='stylesheet' type='text/css' href='/css/main.css'>
+    </head>
+    <body>
+        <main>
+            <div class="pokedex">
+                <div class="pokedex-main-panel">
+                    <div>
+                        <p id="name"><!-- --></p>
+                        <p id="id"><!-- --></p>
+                    </div>
+                    <div>
+                        <p id="loading">Loading...</p>
+                        <img src="<!-- -->" alt="pokemon" id="image">
+                    </div>
+                    <div>
+                        <p id="height"><!-- --></p>
+                        <p id="weight"><!-- --></p>
+                    </div>
+                    <div id="types">
+                        <!-- -->
+                    </div>
+                    <div>
+                        <button class="btn" id="btn-previous">
+                            <i class="fas fa-arrow-left"></i>
+                        </button>
+                        <button class="btn" id="btn-next">
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                    <div>
+                        <input type="text" class="input" id="pokemon-input">
+                        <button class="btn" id="btn-search">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
                 </div>
-                <div id="types">
-                    <!-- -->
-                </div>
-            </div>
-            <div id="pagination">
-                <button type="button" class="button" id="back">
-                    <i class="fas fa-arrow-left"></i>
-                </button>
-                <button type="button" class="button" id="next">
-                    <i class="fas fa-arrow-right"></i>
-                </button>
-            </div>
-            <div id="search-bar">
-                <input type="text">
-                <button type="button" class="button" id="search">
-                    <i class="fas fa-search"></i>
-                </button>
-            </div>
-        </div>
+                <div class="pokedex-secondary-panel">
+                    <div class="stat-bar">
+                        <p>HP</p>
+                        <div>
+                            <div class="bar">
+                                <div class="bar bar-fill bar-fill-hp" id="stat-fill-hp"></div>
+                            </div>
+                            <p id="stat-value-hp"><!-- --></p>
+                        </div>
+                    </div>
 
-        <div id="container-2">
-            <div class="stats">
-                <div>HP</div>
-                <div class="status-bar">
-                    <div class="bar" id="hp"></div>
-                </div>
-                <div id="hp-value"></div>
-            </div>
-            <div class="stats">
-                <div>Attack</div>
-                <div class="status-bar">
-                    <div class="bar" id="attack"></div>
-                </div>
-                <div id="attack-value"></div>
-            </div>
-            <div class="stats">
-                <div>Defense</div>
-                <div class="status-bar">
-                    <div class="bar" id="defense"></div>
-                </div>
-                <div id="defense-value"></div>
-            </div>
-            <div class="stats">
-                <div>Speed</div>
-                <div class="status-bar">
-                    <div class="bar" id="speed"></div>
-                </div>
-                <div id="speed-value"></div>
-            </div>
-            <div class="stats">
-                <div>Special-Attack</div>
-                <div class="status-bar">
-                    <div class="bar" id="special-attack"></div>
-                </div>
-                <div id="special-attack-value"></div>
-            </div>
-            <div class="stats">
-                <div>Special-Defense</div>
-                <div class="status-bar">
-                    <div class="bar" id="special-defense"></div>
-                </div>
-                <div id="special-defense-value"></div>
-            </div>
-        </div>
+                    <div class="stat-bar">
+                        <p>Attack</p>
+                        <div>
+                            <div class="bar">
+                                <div class="bar bar-fill bar-fill-attack" id="stat-fill-attack"></div>
+                            </div>
+                            <p id="stat-value-attack"><!-- --></p>
+                        </div>
+                    </div>
 
-        <div id="footer">&copy;Leonel Gauna</div>
+                    <div class="stat-bar">
+                        <p>Defense</p>
+                        <div>
+                            <div class="bar">
+                                <div class="bar bar-fill bar-fill-defense" id="stat-fill-defense"></div>
+                            </div>
+                            <p id="stat-value-defense"><!-- --></p>
+                        </div>
+                    </div>
 
-    </div>
+                    <div class="stat-bar">
+                        <p>Speed</p>
+                        <div>
+                            <div class="bar">
+                                <div class="bar bar-fill bar-fill-speed" id="stat-fill-speed"></div>
+                            </div>
+                            <p id="stat-value-speed"><!-- --></p>
+                        </div>
+                    </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
-    <script src="./js/index.js"></script>
+                    <div class="stat-bar">
+                        <p>Special-Attack</p>
+                        <div>
+                            <div class="bar">
+                                <div class="bar bar-fill bar-fill-sa" id="stat-fill-sa"></div>
+                            </div>
+                            <p id="stat-value-sa"><!-- --></p>
+                        </div>
+                    </div>
 
-</body>
-
+                    <div class="stat-bar">
+                        <p>Special-Defense</p>
+                        <div>
+                            <div class="bar">
+                                <div class="bar bar-fill bar-fill-sd" id="stat-fill-sd"></div>
+                            </div>
+                            <p id="stat-value-sd"><!-- --></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
 </html>
