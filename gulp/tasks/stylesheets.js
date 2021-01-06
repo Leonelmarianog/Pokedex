@@ -6,6 +6,7 @@ const noop = require('gulp-noop');
 const sourcemaps = require('gulp-sourcemaps');
 const sass = require('gulp-sass');
 const cleancss = require('gulp-clean-css');
+const autoprefixer = require('gulp-autoprefixer');
 const {
   sassInputFiles,
   cssOutputFiles,
@@ -27,6 +28,12 @@ function compileSass() {
     .pipe(dest(cssOutputFolder));
 }
 
+function prefixCSS() {
+  return src(cssOutputFiles)
+    .pipe(autoprefixer({ cascade: false }))
+    .pipe(dest(cssOutputFolder));
+}
+
 function copySass() {
   return src(sassInputFiles).pipe(dest(cssOutputFolder));
 }
@@ -44,5 +51,5 @@ function minifyCSS() {
 
 module.exports = {
   runCSSTasksDev: series([cleanCSS, compileSass, copySass]),
-  runCSSTasks: series([cleanCSS, compileSass, minifyCSS]),
+  runCSSTasks: series([cleanCSS, compileSass, minifyCSS, prefixCSS]),
 };
