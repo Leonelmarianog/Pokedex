@@ -1,5 +1,7 @@
 # Pokedex
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 A Pokedex using the RESTful API [PokéAPI](https://pokeapi.co/).
 
 See it live! [Pokedex](https://leonelmarianog.github.io/Pokedex/).
@@ -28,5 +30,3 @@ This project uses [Cypress](https://www.cypress.io/) for E2E testing and [Jest](
 ```
 WIP
 ```
-
-# Licence
