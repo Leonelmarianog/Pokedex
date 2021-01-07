@@ -10,7 +10,7 @@ function displayBasicInfo(id, name, height, weight, image) {
   document.querySelector('#name').textContent = `${name}`;
   document.querySelector('#height').textContent = `${height}`;
   document.querySelector('#weight').textContent = `${weight}`;
-  document.querySelector('#image').src = image || '/img/no-image.png';
+  document.querySelector('#image').src = image || '../img/no-image.png';
 }
 
 /**

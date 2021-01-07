@@ -8,7 +8,7 @@ export default async function getPokemon(id) {
   if (!response.ok) {
     const error = new Error();
 
-    error.image = '/img/worried-pikachu.png';
+    error.image = '../img/worried-pikachu.png';
     error.message = 'Sorry, something went wrong! Try again in a few minutes!.';
 
     throw error;
