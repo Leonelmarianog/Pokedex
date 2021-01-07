@@ -13,7 +13,7 @@ const sassInputFiles = './src/sass/**/*.scss';
 const cssOutputFiles = `${cssOutputFolder}/*.css`;
 const cssAndSassOutputFiles = [`${cssOutputFolder}/*`];
 
-const imgInputFiles = ['./src/img/*.jpg', './src/img/*.png'];
+const imgInputFiles = ['./src/img/*.jpg', './src/img/*.png', './src/img/*.ico'];
 const imgOutputFiles = [`${imgOutputFolder}/*.jpg`, `${imgOutputFolder}/*.png`];
 
 const paths = {
