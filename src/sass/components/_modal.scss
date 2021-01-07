@@ -1,0 +1,51 @@
+#overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background: $overlay-color;
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+
+#modal {
+  background-color: $pokedex-bg-color;
+  width: 50%;
+  height: 225px;
+  padding: 1em 2em;
+  color: $text-color;
+  text-align: center;
+  border-top: 0.2em solid $modal-top-border-color;
+  border-left: 0.2em solid $modal-left-border-color;
+  border-bottom: 0.2em solid $modal-bottom-right-border-color;
+  border-right: 0.2em solid $modal-bottom-right-border-color;
+  position: absolute;
+  z-index: 20;
+  display: none;
+
+  & > div {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    & > img {
+      height: 150px;
+      border-radius: 16px;
+      margin-right: 1em;
+    }
+
+    & > p {
+      font-size: $font-size * 1.5;
+      margin: 0 auto;
+    }
+
+    & > button {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+    }
+  }
+}

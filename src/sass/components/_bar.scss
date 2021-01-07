@@ -1,0 +1,63 @@
+.stat-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  & > p {
+    align-self: flex-start;
+    margin-bottom: 0.5em;
+  }
+
+  & > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  & > div > div {
+    margin-right: 1em;
+  }
+}
+
+.bar {
+  background: $bar-bg-color;
+  height: 16px;
+  width: 80%;
+  min-width: 150px;
+  box-shadow: 0 0.1em 0.5em 0 $bar-shadow-color-inset inset, 0 0.1em 0 0 $bar-shadow-color;
+  border-radius: 1em;
+
+  .bar-fill {
+    width: 50%;
+    min-width: 0;
+    box-shadow: 0 0.25em 0 0 $bar-fill-shadow-inset inset;
+    transition: width 1s;
+  }
+}
+
+.bar-fill-hp {
+  background-color: $bar-fill-hp-color;
+}
+
+.bar-fill-attack {
+  background-color: $bar-fill-attack-color;
+}
+
+.bar-fill-defense {
+  background-color: $bar-fill-defense-color;
+}
+
+.bar-fill-speed {
+  background-color: $bar-fill-speed-color;
+}
+
+.bar-fill-sa {
+  background-color: $bar-fill-special-attack-color;
+}
+
+.bar-fill-sd {
+  background-color: $bar-fill-special-defense-color;
+}
