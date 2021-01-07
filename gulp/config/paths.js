@@ -1,4 +1,4 @@
-const publicRoot = './public';
+const publicRoot = './docs';
 
 const cssOutputFolder = `${publicRoot}/css`;
 const jsOutputFolder = `${publicRoot}/js`;
