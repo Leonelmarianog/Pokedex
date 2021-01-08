@@ -2,7 +2,8 @@
   "env": {
     "browser": true,
     "es6": true,
-    "cypress/globals": true
+    "cypress/globals": true,
+    "jest/globals": true
   },
   "extends": ["airbnb-base", "prettier"],
   "globals": {
@@ -13,7 +14,7 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": ["cypress"],
+  "plugins": ["cypress", "jest"],
   "rules": {
     "import/extensions": [
       "error",
