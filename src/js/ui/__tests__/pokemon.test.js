@@ -1,13 +1,12 @@
 import fs from 'fs';
 import path from 'path';
 import pokemonMapper from '../../mappers/mapper.js';
-import displayPokemon from '../pokedex.js';
+import displayPokemon from '../pokemon.js';
 import pokedexBody from '../../../mocks/fixtures/indexHtml.js';
 
 const pokemonData1 = JSON.parse(
-  fs.readFileSync(path.resolve(__dirname, '../../../mocks/fixtures/pikachu.json'), 'utf-8')
+  fs.readFileSync(path.resolve(__dirname, '../../../mocks/fixtures/bulbasaur.json'), 'utf-8')
 );
-
 const pokemonData2 = JSON.parse(
   fs.readFileSync(path.resolve(__dirname, '../../../mocks/fixtures/spectrier.json'), 'utf-8')
 );
@@ -55,8 +54,9 @@ describe('displayPokemon', () => {
     expect(weight).toBe(pokemon1.weight);
     expect(image).toBe(pokemon1.image);
 
-    expect($types.children).toHaveLength(1);
+    expect($types.children).toHaveLength(2);
     expect($types.children[0].textContent).toBe(pokemon1.types[0].name);
+    expect($types.children[1].textContent).toBe(pokemon1.types[1].name);
 
     expect(hpValue).toBe(pokemon1.stats[0].value);
     expect(hpFillWidth).toBe(`${pokemon1.stats[0].value}%`);

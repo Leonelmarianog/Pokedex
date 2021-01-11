@@ -9,20 +9,20 @@ describe('setLoading', () => {
   it('Displays a "Loading" text when passed true', () => {
     setLoading(true);
 
-    const textDisplayValue = document.querySelector('#loading').style.display;
+    const $loading = document.querySelector('#loading');
 
-    expect(textDisplayValue === 'block').toBe(true);
+    expect($loading.style.display).toBe('block');
   });
 
   it('Hiddes "Loading" text when passed false', () => {
-    let textDisplayValue = document.querySelector('#loading').style.display;
+    let $loading = document.querySelector('#loading');
 
-    expect(textDisplayValue === 'block').toBe(true);
+    expect($loading.style.display).toBe('block');
 
     setLoading(false);
 
-    textDisplayValue = document.querySelector('#loading').style.display;
+    $loading = document.querySelector('#loading');
 
-    expect(textDisplayValue === 'none').toBe(true);
+    expect($loading.style.display).toBe('none');
   });
 });

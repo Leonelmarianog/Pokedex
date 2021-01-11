@@ -4,7 +4,7 @@ import pokemonMapper from '../mapper.js';
 import { Pokemon, Type, Stat } from '../../entities/index.js';
 
 const pokemonData = JSON.parse(
-  fs.readFileSync(path.resolve(__dirname, '../../../mocks/fixtures/pikachu.json'), 'utf-8')
+  fs.readFileSync(path.resolve(__dirname, '../../../mocks/fixtures/bulbasaur.json'), 'utf-8')
 );
 
 describe('pokemonMapper', () => {
