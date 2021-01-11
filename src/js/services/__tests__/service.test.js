@@ -21,19 +21,19 @@ afterAll(() => {
 
 describe('getPokemonByIdOrName', () => {
   it('Returns a specific pokemon from the API when it is not stored in local storage', async () => {
-    const pokemon = await getPokemonByIdOrName(25);
+    const pokemon = await getPokemonByIdOrName(1);
 
     expect(pokemon).toBeInstanceOf(Pokemon);
   });
 
   it('Returns a specific pokemon from localStorage if it is already stored', async () => {
     const pokemonData = JSON.parse(
-      fs.readFileSync(path.resolve(__dirname, '../../../mocks/fixtures/pikachu.json'), 'utf-8')
+      fs.readFileSync(path.resolve(__dirname, '../../../mocks/fixtures/bulbasaur.json'), 'utf-8')
     );
 
     global.localStorage.setItem(`${pokemonData.id}`, JSON.stringify(pokemonData));
 
-    const pokemon = await getPokemonByIdOrName(25);
+    const pokemon = await getPokemonByIdOrName(1);
 
     expect(pokemon).toBeInstanceOf(Pokemon);
   });

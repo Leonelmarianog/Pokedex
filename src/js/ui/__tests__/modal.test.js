@@ -1,37 +1,41 @@
-import { showModal, closeModal } from '../modal.js';
+import showModal from '../modal.js';
 import pokedexBody from '../../../mocks/fixtures/indexHtml.js';
 
-beforeAll(() => {
+beforeEach(() => {
   document.body.innerHTML = pokedexBody;
 });
 
-describe('showModal', () => {
-  it('Shows a modal', () => {
+describe('modal', () => {
+  it('appears when called', () => {
     const imageMock = './img/worried-pikachu.png';
     const messageMock = 'Oops!';
 
     showModal(imageMock, messageMock);
 
+    const $modal = document.querySelector('#modal');
     const modalImage = document.querySelector('#modal-img').getAttribute('src');
     const modalMessage = document.querySelector('#modal-text').innerText;
-    const modalDisplayValue = document.querySelector('#modal').style.display;
+    const $overlay = document.querySelector('#overlay');
 
+    expect($modal.style.display).toBe('block');
     expect(modalImage).toBe(imageMock);
     expect(modalMessage).toBe(messageMock);
-    expect(modalDisplayValue === 'block').toBe(true);
+    expect($overlay.style.opacity).toBe('0.5');
   });
-});
 
-describe('closeModal', () => {
-  it('Closes the modal', () => {
-    let modalDisplayValue = document.querySelector('#modal').style.display;
+  it('Dissapears when we close it', () => {
+    const imageMock = './img/worried-pikachu.png';
+    const messageMock = 'Oops!';
 
-    expect(modalDisplayValue === 'block').toBe(true);
+    showModal(imageMock, messageMock);
 
-    closeModal();
+    const $modal = document.querySelector('#modal');
+    const $overlay = document.querySelector('#overlay');
 
-    modalDisplayValue = document.querySelector('#modal').style.display;
+    const closeBtn = document.querySelector('#btn-close-modal').onclick;
+    closeBtn();
 
-    expect(modalDisplayValue === 'none').toBe(true);
+    expect($modal.style.display).toBe('none');
+    expect($overlay.style.opacity).toBe('0');
   });
 });

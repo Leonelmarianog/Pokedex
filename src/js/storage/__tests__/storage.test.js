@@ -3,7 +3,7 @@ import path from 'path';
 import { getPokemon, savePokemon } from '../storage.js';
 
 const pokemonData = JSON.parse(
-  fs.readFileSync(path.resolve(__dirname, '../../../mocks/fixtures/pikachu.json'), 'utf-8')
+  fs.readFileSync(path.resolve(__dirname, '../../../mocks/fixtures/bulbasaur.json'), 'utf-8')
 );
 
 afterEach(() => global.localStorage.clear());
@@ -12,18 +12,16 @@ describe('getPokemon', () => {
   it('Fetchs a specific pokemon from localStorage if it is stored', () => {
     global.localStorage.setItem(`${pokemonData.id}`, JSON.stringify(pokemonData));
 
-    const storedPokemonData = getPokemon(25);
+    const storedPokemonData = getPokemon(1);
 
     expect(storedPokemonData).toEqual(pokemonData);
   });
 
   it('Throws an error when trying to get a not stored pokemon from localStorage', () => {
-    global.localStorage.setItem(`${pokemonData.id}`, JSON.stringify(pokemonData));
-
     try {
-      getPokemon(20);
+      getPokemon(3265);
     } catch (error) {
-      expect(error.message).toBe('Pokemon not in storage.');
+      expect(error.message).toBeDefined();
     }
   });
 });
@@ -32,7 +30,7 @@ describe('savePokemon', () => {
   it('Saves pokemonData in localStorage when valid data is passed', () => {
     savePokemon(pokemonData);
 
-    const storedPokemonData = getPokemon(25);
+    const storedPokemonData = getPokemon(1);
 
     expect(storedPokemonData).toEqual(pokemonData);
   });
@@ -41,7 +39,7 @@ describe('savePokemon', () => {
     try {
       savePokemon();
     } catch (error) {
-      expect(error.message).toBe('A pokemon is needed in order to save it.');
+      expect(error.message).toBeDefined();
     }
   });
 

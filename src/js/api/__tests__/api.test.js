@@ -17,11 +17,11 @@ afterAll(() => {
 
 describe('getPokemon', () => {
   it('returns an object when passed a valid id/name', async () => {
-    await expect(getPokemon(25)).resolves.toBeInstanceOf(Object);
+    await expect(getPokemon(1)).resolves.toBeInstanceOf(Object);
   });
 
   it('Throws an exception when passed an invalid id/name', async () => {
-    await expect(getPokemon(21)).rejects.toThrowError(
+    await expect(getPokemon(3245)).rejects.toThrowError(
       'Sorry, something went wrong! Try again in a few minutes!.'
     );
   });
