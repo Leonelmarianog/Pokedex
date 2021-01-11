@@ -28,5 +28,6 @@ Both commands host the page on a web server in your browser, you can then make c
 This project uses [Cypress](https://www.cypress.io/) for E2E testing and [Jest](https://jestjs.io/) for Unit Tests.
 
 ```
-WIP
+npm run test:dev # Run Jest Unit Tests
+npm run test # Get code coverage
 ```
