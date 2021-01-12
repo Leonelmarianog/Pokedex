@@ -11,8 +11,8 @@
     "test:cypress": "cypress run",
     "test:cypress:dev": "cypress open",
     "serve": "http-server ./docs -c-1",
-    "sass": "sass ./src/sass/index.scss ./public/css/index.css",
-    "sass:watch": "sass ./src/sass/index.scss ./public/css/index.css --watch --poll",
+    "sass": "sass ./src/sass/main.scss ./docs/css/main.css",
+    "sass:watch": "sass ./src/sass/main.scss ./docs/css/main.css --watch --poll",
     "gulp": "cross-env NODE_ENV=production gulp",
     "gulp:dev": "cross-env NODE_ENV=development gulp"
   },
