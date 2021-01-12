@@ -19,10 +19,13 @@ const runTasksProd = series([
   startServer,
 ]);
 
+const runBuild = parallel([runJSTasks, runCSSTasks, runIMGTasks, copyHTML]);
+
 watch(['./src/sass/**/*.scss'], { usePolling: true }, isDevelopment ? runCSSTasksDev : runCSSTasks);
 watch(['./index.html'], { usePolling: true }, copyHTML);
 watch(['./src/img/*.jpg', './src/img/*.png'], { usePolling: true }, runIMGTasks);
 bundler.on('update', bundleJS);
 bundler.on('log', console.log);
 
+exports.build = runBuild;
 exports.default = isDevelopment ? runTasksDev : runTasksProd;
