@@ -29,5 +29,7 @@ This project uses [Cypress](https://www.cypress.io/) for E2E testing and [Jest](
 
 ```
 npm run test:dev # Run Jest Unit Tests
-npm run test # Get code coverage
+npm run test # Get Jest code coverage
+npm run test:ui # Run UI tests (headless)
+npm run test:ui:dev # Run UI tests
 ```
