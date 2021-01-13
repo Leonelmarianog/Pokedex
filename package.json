@@ -15,7 +15,7 @@
     "sass:watch": "sass ./src/sass/main.scss ./docs/css/main.css --watch --poll",
     "gulp": "cross-env NODE_ENV=production gulp",
     "gulp:dev": "cross-env NODE_ENV=development gulp",
-    "gulp:build": "gulp run build"
+    "gulp:build": "cross-env BUILD=true gulp build"
   },
   "repository": {
     "type": "git",
