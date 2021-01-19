@@ -3,6 +3,6 @@ const { defaults } = require('jest-config');
 
 module.exports = {
   moduleFileExtensions: [...defaults.moduleFileExtensions, 'ts', 'tsx'],
-  modulePathIgnorePatterns: ['./cypress'],
-  coveragePathIgnorePatterns: ['./src/mocks'],
+  modulePathIgnorePatterns: ['cypress'],
+  coveragePathIgnorePatterns: ['cypress', '<rootDir>/src/mocks'],
 };
