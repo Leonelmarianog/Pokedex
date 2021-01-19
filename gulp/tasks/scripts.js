@@ -5,10 +5,10 @@ const clean = require('gulp-clean');
 const source = require('vinyl-source-stream');
 const terser = require('gulp-terser');
 const bundler = require('../config/bundler');
-const { jsOutputFiles, jsOutputFolder } = require('../config/paths');
+const { scripts } = require('../config/paths');
 
 function cleanJS() {
-  return src(jsOutputFiles).pipe(clean());
+  return src(`${scripts.output}/*`).pipe(clean());
 }
 
 function bundleJS() {
@@ -16,11 +16,11 @@ function bundleJS() {
     .bundle()
     .on('error', console.error)
     .pipe(source('index.js'))
-    .pipe(dest(jsOutputFolder));
+    .pipe(dest(scripts.output));
 }
 
 function minifyJS() {
-  return src(jsOutputFiles).pipe(terser()).pipe(dest(jsOutputFolder));
+  return src(`${scripts.output}/*.js`).pipe(terser()).pipe(dest(scripts.output));
 }
 
 module.exports = {

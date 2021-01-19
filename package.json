@@ -10,12 +10,13 @@
     "test:ui:dev": "run-p serve test:cypress:dev",
     "test:cypress": "cypress run",
     "test:cypress:dev": "cypress open",
-    "serve": "http-server ./docs -c-1",
-    "sass": "sass ./src/sass/main.scss ./docs/css/main.css",
-    "sass:watch": "sass ./src/sass/main.scss ./docs/css/main.css --watch --poll",
+    "serve": "http-server ./dist -c-1",
+    "sass": "sass ./src/sass/main.scss ./dist/css/main.css",
+    "sass:watch": "sass ./src/sass/main.scss ./dist/css/main.css --watch --poll",
     "gulp": "cross-env NODE_ENV=production gulp",
     "gulp:dev": "cross-env NODE_ENV=development gulp",
-    "gulp:build": "cross-env BUILD=true gulp build"
+    "gulp:build": "cross-env WATCH=false gulp build",
+    "gulp:deploy": "cross-env WATCH=false gulp deploy"
   },
   "repository": {
     "type": "git",
@@ -29,6 +30,7 @@
   "homepage": "https://github.com/Leonelmarianog/Pokedex#readme",
   "devDependencies": {
     "@babel/core": "^7.12.10",
+    "@babel/plugin-transform-runtime": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "@types/jest": "^26.0.20",
     "babel-jest": "^26.6.3",
@@ -46,6 +48,7 @@
     "gulp-autoprefixer": "^7.0.1",
     "gulp-clean": "^0.4.0",
     "gulp-clean-css": "^4.3.0",
+    "gulp-gh-pages": "git+https://github.com/shinnn/gulp-gh-pages.git",
     "gulp-noop": "^1.0.1",
     "gulp-sass": "^4.1.0",
     "gulp-sourcemaps": "^3.0.0",

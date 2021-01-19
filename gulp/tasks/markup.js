@@ -1,9 +1,9 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const { src, dest } = require('gulp');
-const { htmlInputFile, publicRoot } = require('../config/paths');
+const { markup } = require('../config/paths');
 
 function copyHTML() {
-  return src(htmlInputFile).pipe(dest(publicRoot));
+  return src(`${markup.input}/index.html`).pipe(dest(markup.output));
 }
 
-module.exports = { copyHTML };
+module.exports = copyHTML;

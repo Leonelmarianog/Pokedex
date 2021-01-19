@@ -7,4 +7,4 @@ function startServer() {
   return src(publicRoot).pipe(webserver({ livereload: true, open: false }));
 }
 
-module.exports = { startServer };
+module.exports = startServer;
