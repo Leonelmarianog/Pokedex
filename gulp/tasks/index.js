@@ -1,11 +1,12 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const { series, parallel } = require('gulp');
 const { runIMGTasks } = require('./images');
-const { runJSTasks, runJSTasksDev } = require('./javascript');
-const { runCSSTasks, runCSSTasksDev } = require('./stylesheets');
-const { copyHTML } = require('./markup');
-const { startServer } = require('./server');
+const copyHTML = require('./markup');
+const { runJSTasks, runJSTasksDev } = require('./scripts');
+const startServer = require('./server');
+const { runCSSTasks, runCSSTasksDev } = require('./styles');
 const runWatch = require('./watch');
+const deploy = require('./deploy');
 
 module.exports = {
   runTasksDev: series([
@@ -13,6 +14,7 @@ module.exports = {
     startServer,
   ]),
   runTasksProd: series([parallel([runJSTasks, runCSSTasks, runIMGTasks, copyHTML]), startServer]),
-  runBuild: parallel([runJSTasks, runCSSTasks, runIMGTasks, copyHTML]),
   runWatch,
+  runBuild: parallel([runJSTasks, runCSSTasks, runIMGTasks, copyHTML]),
+  runDeploy: series([parallel([runJSTasks, runCSSTasks, runIMGTasks, copyHTML]), deploy]),
 };

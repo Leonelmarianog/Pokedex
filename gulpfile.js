@@ -1,8 +1,9 @@
-const { runTasksDev, runTasksProd, runBuild, runWatch } = require('./gulp/tasks');
+const { runTasksDev, runTasksProd, runWatch, runBuild, runDeploy } = require('./gulp/tasks');
 
-if (!process.env.BUILD) {
-  runWatch();
-}
+const isDevelopment = process.env.NODE_ENV === 'development';
 
+runWatch();
+
+exports.deploy = runDeploy;
 exports.build = runBuild;
-exports.default = process.env.NODE_ENV === 'development' ? runTasksDev : runTasksProd;
+exports.default = isDevelopment ? runTasksDev : runTasksProd;
