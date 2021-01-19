@@ -19,7 +19,7 @@
     "import/extensions": [
       "error",
       {
-        "js": "always",
+        "js": "sometimes",
         "json": "sometimes"
       }
     ]
