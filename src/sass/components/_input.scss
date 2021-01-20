@@ -5,9 +5,19 @@
   border-radius: 1em;
   padding: 0.25em 1em;
   text-align: center;
-  color: $text-color;
   transition: background-color 0.2s;
   box-shadow: 0 0.1em 0.5em 0 $input-shadow-color-inset inset, 0 0.1em 0 0 $input-shadow-color;
+  font-size: $font-size-base;
+  color: $text-color-base;
+  text-shadow: $text-shadow;
+
+  @media (max-width: 767.98px) {
+    font-size: $font-size-base / 1.2;
+  }
+
+  @media (max-width: 575.98px) {
+    font-size: $font-size-base / 1.7;
+  }
 }
 
 .input:focus {

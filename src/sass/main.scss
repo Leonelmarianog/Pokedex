@@ -1,13 +1,18 @@
-@import 'base/normalize';
-@import 'base/reset';
+@import 'vendors/normalize';
+
+@import 'abstracts/colors';
 @import 'abstracts/images';
 @import 'abstracts/typhography';
-@import 'abstracts/colors';
-@import 'layout/page';
-@import 'layout/pokedex';
-@import 'components/pokedex';
-@import 'components/button';
-@import 'components/pill';
-@import 'components/input';
+
+@import 'base/base';
+@import 'base/reset';
+@import 'base/typography';
+
 @import 'components/bar';
+@import 'components/button';
+@import 'components/input';
 @import 'components/modal';
+@import 'components/pill';
+
+@import 'layout/base';
+@import 'layout/pokedex';
