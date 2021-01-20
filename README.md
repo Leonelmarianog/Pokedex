@@ -22,8 +22,6 @@ npm run gulp # Run project in production mode.
 npm run gulp:dev # Run project in development mode.
 ```
 
-Both commands host the page on a web server in your browser, you can then make changes to the source code, the web server will auto-refresh on any changes.
-
 # Tests
 
 This project uses [Cypress](https://www.cypress.io/) for E2E testing and [Jest](https://jestjs.io/) for Unit Tests.
