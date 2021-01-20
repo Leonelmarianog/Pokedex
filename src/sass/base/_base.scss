@@ -1,7 +1,10 @@
+main {
+  background: url($background-image);
+  background-size: cover;
+}
+
 .pokedex {
   background-color: $pokedex-bg-color;
-  color: $text-color;
-  font-size: 1rem;
   text-align: center;
   border-top: 0.2em solid $pokedex-top-border-color;
   border-left: 0.2em solid $pokedex-left-border-color;
@@ -26,12 +29,6 @@
 
     & > p {
       display: none;
-      font-size: $font-size * 2;
-    }
-
-    & > img {
-      width: 50%;
-      height: 100%;
     }
   }
 }
@@ -43,5 +40,4 @@
   border-left: 0.15em solid $container-bottom-left-border-color;
   border-bottom: 0.15em solid $container-bottom-left-border-color;
   box-shadow: 0 0 0.15em 0.15em $container-shadow-color inset;
-  padding: 0 1em;
 }
